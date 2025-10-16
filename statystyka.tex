@@ -1,0 +1,142 @@
+\documentclass[11pt, leqno]{scrartcl}
+\usepackage{polski}
+\usepackage[polish]{babel}
+
+\usepackage{graphicx, float, caption, subcaption}
+\usepackage{tabularx, multirow, hyperref, enumitem}
+\usepackage{listings, xcolor}
+\usepackage{amsmath, amssymb}
+\usepackage{amsthm}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definicja}[section]
+
+\title{Rachunek prawdopodobieństwa i statystyka}
+\author{Mateusz Podmokły III rok Informatyka WI}
+\date{semestr zimowy 2025}
+
+\begin{document}
+    \maketitle
+    \section{Podstawy rachunku prawdopodobieństwa}
+
+    \begin{definition}
+        \textbf{Przestrzeń zdarzeń elementarnych} -- Niepusty zbiór
+        $\Omega$ wszystkich możliwych wyników doświadczenia losowego.
+    \end{definition}
+    \noindent
+    Jego elementy to zdarzenia elementarne.
+    \begin{definition}
+        \textbf{$\sigma$-algebra zdarzeń} -- podrodzina $\Sigma$
+        w rodzinie wszystkich podzbiorów $\Omega$ o następujących
+        właściwościach:
+        \begin{enumerate}
+            \item $\Omega \in \Sigma$
+            \item Jeśli $A \in \Sigma$ to $A'=\Omega \setminus A \in
+                \Sigma$
+            \item Dla dowolnego ciągu zbiorów $A_1,A_2,\dots$ takiego,
+                że $A_i \in \Sigma$ dla $i \in \mathbb{N}$, zachodzi
+                \[
+                    \bigcup_{i=1}^{\infty}A_i \in \Sigma
+                \]
+        \end{enumerate}
+        Jej elementy to zdarzenia losowe.
+    \end{definition}
+    \noindent
+    Własności zdarzeń:
+    \begin{enumerate}
+        \item $\emptyset \in \Sigma$
+        \item Jeśli $A_1,A_2,\dots,A_n \in \Sigma$, to
+            $A_1 \cup A_2 \cup \dots \cup A_n \in \Sigma$
+        \item Dla dowolnego ciągu $A_1,A_2,\dots$ takiego, że
+            $A_i \in \Sigma$ dla $i \in \mathbb{N}$, zachodzi
+            \[
+                \bigcap_{i=1}^{\infty}A_i \in \Sigma
+            \]
+        \item Jeśli $A,B \in \Sigma$ to $A \setminus B \in \Sigma$
+    \end{enumerate}
+    Określmy niezbędną terminologię:
+    \begin{description}
+        \item[$\emptyset$] -- zdarzenie niemożliwe
+        \item[$\Omega$] -- zdarzenie pewne
+        \item[$A'=\Omega \setminus A$] -- dopełnienie zdarzenia $A$
+        \item[$A \cap B= \emptyset$] -- zdarznia wzajemnie się
+            wykluczają.
+    \end{description}
+    \begin{definition}
+        \textbf{Miara probabilistyczna} (rozkład prawdopodobieństwa)
+        -- w przestrzeni $\Omega$ z $\sigma$-algebrą zdarzeń $\Sigma$
+        dowolne odwzorowanie
+        \[
+            P:\Sigma \to [0,1]
+        \]
+        spełniające warunki:
+        \begin{enumerate}
+            \item $P(\Omega)=1$
+            \item Dla dowolnego ciągu zdarzeń $A_1,A_2,\dots$ takiego,
+                że $A_i \in \Sigma$ dla $i \in \mathbb{N}$ oraz
+                $A_i \cap A_j=\emptyset$ dla $i \neq j$ zachodzi
+                \[
+                    P\left(\bigcup_{i=1}^{\infty}A_i\right)=
+                    \sum_{i=1}^{\infty}P(A_i)
+                \]
+        \end{enumerate}
+    \end{definition}
+    Własności prawdopodobieństwa:
+    \begin{enumerate}
+        \item $P(\emptyset)$=0
+        \item Jeśli skończony ciąg zdarzeń $A_1,A_2,\dots,A_n$ spełnia
+            warunek
+            \[
+                A_i \cap A_j = \emptyset \text{ dla }i \neq j
+            \]
+            to
+            \[
+                P(A_1 \cup A_2 \cup \dots \cup A_n)=
+                P(A_1)+P(A_2)+\dots +P(A_n)
+            \]
+        \item Dla dowolnego zdarzenia $A$ zachodzi
+            \[
+                P(A')=1-P(A)
+            \]
+        \item Dla dowolnych zdarzeń $A$ i $B$ zachodzi
+            \[
+                P(A \cup B)=P(A)+P(B)-P(A \cap B)
+            \]
+        \item Jeśli $A \subset B$ to $P(A)\leq P(B)$
+        \item Jeśli zdarzenia $A_1,A_2,\dots$ tworzą ciąg
+            wstępujący, tzn.
+            \[
+                A_1 \subset A_2 \subset \dots
+            \]
+            to
+            \[
+                P\left( \bigcup_{i=1}^{\infty}A_i \right)=
+                \lim_{i \to \infty}P(A_i)
+            \]
+        \item Jeśli zdarzenia $A_1,A_2,\dots$ tworzą ciąg
+            zstępujący, tzn.
+            \[
+                A_1 \supset A_2 \supset \dots
+            \]
+            to
+            \[
+                P\left( \bigcap_{i=1}^{\infty}A_i \right)=
+                \lim_{i \to \infty}P(A_i)
+            \]
+    \end{enumerate}
+    \begin{definition}
+        \textbf{Przestrzeń probabilistyczna} -- trójka
+        $(\Omega,\Sigma,P)$, gdzie:
+        \begin{description}
+            \item[$\Omega$] -- niepusty zbiór,
+            \item[$\Sigma$] -- $\sigma$-algebra w $\Omega$,
+            \item[$P$] -- miara probabilistyczna.
+        \end{description}
+    \end{definition}
+    Liczbę $P(A)$ nazywamy prawdopodobieństwem zdarzenia $A$.
+
+    \section{Prawdopodobieństwo warunkowe}
+    \begin{definition}
+        
+    \end{definition}
+\end{document}
