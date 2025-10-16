@@ -18,15 +18,14 @@
 \begin{document}
     \maketitle
     \section{Podstawy rachunku prawdopodobieństwa}
-
     \begin{definition}
-        \textbf{Przestrzeń zdarzeń elementarnych} -- Niepusty zbiór
+        \textbf{Przestrzeń zdarzeń elementarnych} to niepusty zbiór
         $\Omega$ wszystkich możliwych wyników doświadczenia losowego.
     \end{definition}
     \noindent
     Jego elementy to zdarzenia elementarne.
     \begin{definition}
-        \textbf{$\sigma$-algebra zdarzeń} -- podrodzina $\Sigma$
+        \textbf{$\sigma$-algebra zdarzeń} to podrodzina $\Sigma$
         w rodzinie wszystkich podzbiorów $\Omega$ o następujących
         właściwościach:
         \begin{enumerate}
@@ -64,7 +63,7 @@
     \end{description}
     \begin{definition}
         \textbf{Miara probabilistyczna} (rozkład prawdopodobieństwa)
-        -- w przestrzeni $\Omega$ z $\sigma$-algebrą zdarzeń $\Sigma$
+        to w przestrzeni $\Omega$ z $\sigma$-algebrą zdarzeń $\Sigma$
         dowolne odwzorowanie
         \[
             P:\Sigma \to [0,1]
@@ -125,7 +124,7 @@
             \]
     \end{enumerate}
     \begin{definition}
-        \textbf{Przestrzeń probabilistyczna} -- trójka
+        \textbf{Przestrzeń probabilistyczna} to trójka
         $(\Omega,\Sigma,P)$, gdzie:
         \begin{description}
             \item[$\Omega$] -- niepusty zbiór,
@@ -137,6 +136,18 @@
 
     \section{Prawdopodobieństwo warunkowe}
     \begin{definition}
-        
+        \textbf{Prawdopodobieństwo warunkowe} to liczba określona
+        wzorem
+        \[
+            P(A \mid B)=\frac{P(A \cap B)}{P(B)}
+        \]
+        gdzie
+        \begin{description}
+            \item[$A,B \subset \Omega$] -- zdarzenia,
+            \item[$P(B)>0$].
+        \end{description}
+        Jest to prawdopodobieństwo $A$ pod warunkiem $B$.
     \end{definition}
+
+    \section{Literatura}
 \end{document}
