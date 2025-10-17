@@ -8,8 +8,27 @@
 \usepackage{amsmath, amssymb}
 \usepackage{amsthm}
 
-\theoremstyle{definition}
-\newtheorem{definition}{Definicja}[section]
+\newtheoremstyle{mydefinition}
+    {1.2em}{1.2em}{}{}{\bfseries}{}{0pt}
+    {\thmname{#1} \thmnumber{#2.}\thmnote{ #3.}\\[0.5em]}
+\theoremstyle{mydefinition}
+\newtheorem{definition}{Definicja}[subsection]
+
+\newtheoremstyle{mytheorem}
+    {1.2em}{1.2em}{}{}{\bfseries}{}{0pt}
+    {\thmname{#1} \thmnumber{#2.}\thmnote{ #3.}\\[0.5em]}
+\theoremstyle{mytheorem}
+\newtheorem{theorem}{Twierdzenie}[subsection]
+
+% \newtheoremstyle{style name}
+% {space above}
+% {space below}
+% {body font}
+% {indent amount}
+% {head font}
+% {head punct}
+% {after head space}
+% {head spec}
 
 \title{Rachunek prawdopodobieństwa i statystyka}
 \author{Mateusz Podmokły III rok Informatyka WI}
@@ -18,16 +37,14 @@
 \begin{document}
     \maketitle
     \section{Podstawy rachunku prawdopodobieństwa}
-    \begin{definition}
-        \textbf{Przestrzeń zdarzeń elementarnych} to niepusty zbiór
-        $\Omega$ wszystkich możliwych wyników doświadczenia losowego.
+    \subsection{Przestrzeń probabilistyczna}
+    \begin{definition}[Przestrzeń zdarzeń elementarnych]
+        Niepusty zbiór $\Omega$ wszystkich możliwych wyników
+        doświadczenia losowego. Jego elementy to zdarzenia elementarne.
     \end{definition}
-    \noindent
-    Jego elementy to zdarzenia elementarne.
-    \begin{definition}
-        \textbf{$\sigma$-algebra zdarzeń} to podrodzina $\Sigma$
-        w rodzinie wszystkich podzbiorów $\Omega$ o następujących
-        właściwościach:
+    \begin{definition}[$\sigma$-algebra zdarzeń]
+        Podrodzina $\Sigma$ w rodzinie wszystkich podzbiorów $\Omega$
+        o następujących właściwościach:
         \begin{enumerate}
             \item $\Omega \in \Sigma$
             \item Jeśli $A \in \Sigma$ to $A'=\Omega \setminus A \in
@@ -61,9 +78,9 @@
         \item[$A \cap B= \emptyset$] -- zdarznia wzajemnie się
             wykluczają.
     \end{description}
-    \begin{definition}
-        \textbf{Miara probabilistyczna} (rozkład prawdopodobieństwa)
-        to w przestrzeni $\Omega$ z $\sigma$-algebrą zdarzeń $\Sigma$
+    \begin{definition}[Miara probabilistyczna (rozkład
+        prawdopodobieństwa)]
+        W przestrzeni $\Omega$ z $\sigma$-algebrą zdarzeń $\Sigma$
         dowolne odwzorowanie
         \[
             P:\Sigma \to [0,1]
@@ -123,9 +140,8 @@
                 \lim_{i \to \infty}P(A_i)
             \]
     \end{enumerate}
-    \begin{definition}
-        \textbf{Przestrzeń probabilistyczna} to trójka
-        $(\Omega,\Sigma,P)$, gdzie:
+    \begin{definition}[Przestrzeń probabilistyczna]
+        Trójka $(\Omega,\Sigma,P)$, gdzie:
         \begin{description}
             \item[$\Omega$] -- niepusty zbiór,
             \item[$\Sigma$] -- $\sigma$-algebra w $\Omega$,
@@ -134,20 +150,53 @@
     \end{definition}
     Liczbę $P(A)$ nazywamy prawdopodobieństwem zdarzenia $A$.
 
-    \section{Prawdopodobieństwo warunkowe}
-    \begin{definition}
-        \textbf{Prawdopodobieństwo warunkowe} to liczba określona
-        wzorem
+    \subsection{Prawdopodobieństwo warunkowe}
+    \begin{definition}[Prawdopodobieństwo warunkowe]
+        Liczba określona wzorem
         \[
             P(A \mid B)=\frac{P(A \cap B)}{P(B)}
         \]
         gdzie
         \begin{description}
             \item[$A,B \subset \Omega$] -- zdarzenia,
-            \item[$P(B)>0$].
+            \item[$P(B)>0$.]
         \end{description}
         Jest to prawdopodobieństwo $A$ pod warunkiem $B$.
     \end{definition}
-
-    \section{Literatura}
+    \begin{definition}[Układ zupełny zdarzeń]
+        Skończony lub nieskończony ciąg zdarzeń $A_1,A_2,\dots$ jeśli
+        zdarzenia w ciągu parami wzajemnie się wykluczają, tzn.
+        \[
+            A_i \cap A_j =\emptyset, \quad i \neq j
+        \]
+        oraz zachodzi
+        \[
+            \Omega=\bigcup_{i}A_i
+        \]
+    \end{definition}
+    \begin{theorem}[Twierdzenie o prawdopodobieństwie całkowitym]
+        Jeśli zdarzenia $A_1,A_2,\dots$ tworzą układ zupełny oraz
+        $P(A_i)>0$ dla $i \in \mathbb{N}$, to dla dowolnego
+        zdarzenia $B$ zachodzi
+        \[
+            P(B)=\sum_{i}P(B \mid A_i)P(A_i)
+        \]
+    \end{theorem}
+    \begin{theorem}[Twierdzenie Bayesa]
+        Jeśli zdarzenia $A_i$ tworzą układ zupełny taki, że
+        $P(A_i)>0$ dla $i \in \mathbb{N}$, a $B$ jest zdarzeniem
+        takim, że $P(B)>0$, to dla dowolnego $k$ zachodzi
+        \[
+            P(A_k \mid B)=\frac{P(B \mid A_k)P(A_k)}
+            {\sum_{i}P(B \mid A_i)P(A_i)}
+        \]
+    \end{theorem}
+    
+    \subsection{Niezależność zdarzeń}
+    \begin{definition}[Niezależność zdarzeń]
+        Zdarzenia $A$ i $B$ nazywamy niezależnymi jeśli
+        \[
+            P(A,B)=P(A) \cdot P(B)
+        \]
+    \end{definition}
 \end{document}
