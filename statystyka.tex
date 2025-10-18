@@ -30,6 +30,19 @@
 % {after head space}
 % {head spec}
 
+\makeatletter
+\renewcommand{\thebibliography}[1]{%
+  \list{\@biblabel{\@arabic\c@enumiv}}%
+       {\settowidth\labelwidth{\@biblabel{#1}}%
+        \leftmargin\labelwidth
+        \advance\leftmargin\labelsep
+        \usecounter{enumiv}%
+        \let\p@enumiv\@empty
+        \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+  \sloppy\clubpenalty4000\widowpenalty4000%
+  \sfcode`\.=1000\relax}
+\makeatother
+
 \title{Rachunek prawdopodobieństwa i statystyka}
 \author{Mateusz Podmokły III rok Informatyka WI}
 \date{semestr zimowy 2025}
@@ -49,7 +62,7 @@
             \item $\Omega \in \Sigma$
             \item Jeśli $A \in \Sigma$ to $A'=\Omega \setminus A \in
                 \Sigma$
-            \item Dla dowolnego ciągu zbiorów $A_1,A_2,\dots$ takiego,
+            \item Dla dowolnego ciągu zbiorów $A_1,A_2,\ldots$ takiego,
                 że $A_i \in \Sigma$ dla $i \in \mathbb{N}$, zachodzi
                 \[
                     \bigcup_{i=1}^{\infty}A_i \in \Sigma
@@ -61,9 +74,9 @@
     Własności zdarzeń:
     \begin{enumerate}
         \item $\emptyset \in \Sigma$
-        \item Jeśli $A_1,A_2,\dots,A_n \in \Sigma$, to
-            $A_1 \cup A_2 \cup \dots \cup A_n \in \Sigma$
-        \item Dla dowolnego ciągu $A_1,A_2,\dots$ takiego, że
+        \item Jeśli $A_1,A_2,\ldots,A_n \in \Sigma$, to
+            $A_1 \cup A_2 \cup \ldots \cup A_n \in \Sigma$
+        \item Dla dowolnego ciągu $A_1,A_2,\ldots$ takiego, że
             $A_i \in \Sigma$ dla $i \in \mathbb{N}$, zachodzi
             \[
                 \bigcap_{i=1}^{\infty}A_i \in \Sigma
@@ -88,7 +101,7 @@
         spełniające warunki:
         \begin{enumerate}
             \item $P(\Omega)=1$
-            \item Dla dowolnego ciągu zdarzeń $A_1,A_2,\dots$ takiego,
+            \item Dla dowolnego ciągu zdarzeń $A_1,A_2,\ldots$ takiego,
                 że $A_i \in \Sigma$ dla $i \in \mathbb{N}$ oraz
                 $A_i \cap A_j=\emptyset$ dla $i \neq j$ zachodzi
                 \[
@@ -100,15 +113,15 @@
     Własności prawdopodobieństwa:
     \begin{enumerate}
         \item $P(\emptyset)$=0
-        \item Jeśli skończony ciąg zdarzeń $A_1,A_2,\dots,A_n$ spełnia
+        \item Jeśli skończony ciąg zdarzeń $A_1,A_2,\ldots,A_n$ spełnia
             warunek
             \[
                 A_i \cap A_j = \emptyset \text{ dla }i \neq j
             \]
             to
             \[
-                P(A_1 \cup A_2 \cup \dots \cup A_n)=
-                P(A_1)+P(A_2)+\dots +P(A_n)
+                P(A_1 \cup A_2 \cup \ldots \cup A_n)=
+                P(A_1)+P(A_2)+\ldots +P(A_n)
             \]
         \item Dla dowolnego zdarzenia $A$ zachodzi
             \[
@@ -119,20 +132,20 @@
                 P(A \cup B)=P(A)+P(B)-P(A \cap B)
             \]
         \item Jeśli $A \subset B$ to $P(A)\leq P(B)$
-        \item Jeśli zdarzenia $A_1,A_2,\dots$ tworzą ciąg
+        \item Jeśli zdarzenia $A_1,A_2,\ldots$ tworzą ciąg
             wstępujący, tzn.
             \[
-                A_1 \subset A_2 \subset \dots
+                A_1 \subset A_2 \subset \ldots
             \]
             to
             \[
                 P\left( \bigcup_{i=1}^{\infty}A_i \right)=
                 \lim_{i \to \infty}P(A_i)
             \]
-        \item Jeśli zdarzenia $A_1,A_2,\dots$ tworzą ciąg
+        \item Jeśli zdarzenia $A_1,A_2,\ldots$ tworzą ciąg
             zstępujący, tzn.
             \[
-                A_1 \supset A_2 \supset \dots
+                A_1 \supset A_2 \supset \ldots
             \]
             to
             \[
@@ -164,7 +177,7 @@
         Jest to prawdopodobieństwo $A$ pod warunkiem $B$.
     \end{definition}
     \begin{definition}[Układ zupełny zdarzeń]
-        Skończony lub nieskończony ciąg zdarzeń $A_1,A_2,\dots$ jeśli
+        Skończony lub nieskończony ciąg zdarzeń $A_1,A_2,\ldots$ jeśli
         zdarzenia w ciągu parami wzajemnie się wykluczają, tzn.
         \[
             A_i \cap A_j =\emptyset, \quad i \neq j
@@ -175,7 +188,7 @@
         \]
     \end{definition}
     \begin{theorem}[Twierdzenie o prawdopodobieństwie całkowitym]
-        Jeśli zdarzenia $A_1,A_2,\dots$ tworzą układ zupełny oraz
+        Jeśli zdarzenia $A_1,A_2,\ldots$ tworzą układ zupełny oraz
         $P(A_i)>0$ dla $i \in \mathbb{N}$, to dla dowolnego
         zdarzenia $B$ zachodzi
         \[
@@ -198,5 +211,33 @@
         \[
             P(A,B)=P(A) \cdot P(B)
         \]
+        Zdarzenia $A_1,A_2,\ldots,A_k$ nazywamy niezależnymi jeśli dla
+        każdego układu indeksów $i_1,i_2,\ldots,i_k$ oraz dla każdego
+        $k \in \{1,2,\ldots,m\}$ zachodzi
+        \[
+            P(A_{i_1},A_{i_2},\ldots,A_{i_k})=P(A_{i_1}) \cdot
+            P(A_{i_2}) \cdot \ldots \cdot P(A_{i_k})
+        \]
     \end{definition}
+    \begin{definition}[Niezależność warunkowa]
+        Zdarzenia $A$ i $B$ są warunkowo niezależne względem $C$
+        dla $P(C)>0$ jeśli
+        \[
+            P(A,B \mid C)=P(A \mid C) \cdot P(B \mid C)
+        \]
+        Zdarzenia $A_1,A_2,\ldots,A_k$ są warunkowo niezależne względem $C$ dla
+        $P(C)>0$ jeśli dla każdego układu indeksów $i_1,i_2,\ldots,i_k$ oraz dla
+        każdego $k \in \{1,2,\ldots,m\}$ zachodzi
+        \[
+            P(A_{i_1},A_{i_2},\ldots,A_{i_k} \mid C)=P(A_{i_1} \mid C) \cdot
+            P(A_{i_2} \mid C) \cdot \ldots \cdot P(A_{i_k} \mid C)
+        \]
+    \end{definition}
+
+    \section{Literatura}
+    \begin{thebibliography}{9}
+        \bibitem{Smołka} Smołka, M. (2025). Rachunek prawdopodobieństwa
+        i statystyka. \textit{Wykłady prowadzone na Akademii Górniczo-Hutniczej
+        w Krakowie}.
+    \end{thebibliography}
 \end{document}
