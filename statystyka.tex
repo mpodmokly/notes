@@ -8,6 +8,13 @@
 \usepackage{amsmath, amssymb}
 \usepackage{amsthm}
 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=black,
+    citecolor=black
+}
+
 \newtheoremstyle{mydefinition}
     {1.2em}{1.2em}{}{}{\bfseries}{}{0pt}
     {\thmname{#1} \thmnumber{#2.}\thmnote{ #3.}\\[0.5em]}
@@ -49,6 +56,9 @@
 
 \begin{document}
     \maketitle
+    \tableofcontents
+    \newpage
+
     \section{Podstawy rachunku prawdopodobieństwa}
     \subsection{Przestrzeń probabilistyczna}
     \begin{definition}[Przestrzeń zdarzeń elementarnych]
@@ -232,6 +242,36 @@
             P(A_{i_1},A_{i_2},\ldots,A_{i_k} \mid C)=P(A_{i_1} \mid C) \cdot
             P(A_{i_2} \mid C) \cdot \ldots \cdot P(A_{i_k} \mid C)
         \]
+    \end{definition}
+
+    \section{Zmienne losowe jednowymiarowe}
+    \subsection{Zmienna losowa}
+    \begin{definition}[Zmienna losowa]
+        Zmienna losowa to odwzorowanie
+        \[
+            X:\Omega \to \mathcal{X}
+        \]
+        takie, że dla każdego $A \in \Sigma_{\mathcal{X}}$ zachodzi
+        \[
+            X^{-1}(A) \in \Sigma
+        \]
+        gdzie $(\Omega,\Sigma,P)$ jest przestrzenią probabilistyczną,
+        $\mathcal{X}$ dowolnym niepustym zbiorem, a $\Sigma_{\mathcal{X}}$
+        $\sigma$-algebrą podzbiorów $\mathcal{X}$.
+    \end{definition}
+    \begin{definition}[Rozkład prawdopodobieństwa zmiennej losowej]
+        Funkcję
+        \[
+            P_X:\Sigma_{\mathcal{X}} \to [0,1]
+        \]
+        określoną następująco
+        \[
+            P_X(A)=P(X^{-1}(A))
+        \]
+        gdzie $(\Omega,\Sigma,P)$ jest przestrzenią probabilistyczną,
+        $\mathcal{X}$ niepustym zbiorem, $\Sigma_{\mathcal{X}}$
+        $\sigma$-algebrą w $\mathcal{X}$, a $X:\Omega \to \mathcal{X}$
+        zmienną losową.
     \end{definition}
 
     \section{Literatura}
