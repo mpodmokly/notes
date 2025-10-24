@@ -273,6 +273,46 @@
         $\sigma$-algebrą w $\mathcal{X}$, a $X:\Omega \to \mathcal{X}$
         zmienną losową.
     \end{definition}
+    \begin{definition}[Dystrybuanta zmiennej losowej]
+        Niech $X:\Omega \to \mathbb{R}$ będzie zmienną losową rzeczywistą.
+        Dystrybuantą zmiennej losowej rzeczywistej $X$ nazywamy funkcję
+        \[
+            F_X:\mathbb{R} \to [0,1]
+        \]
+        określoną wzorem
+        \[
+            F_X(x)=P(X \leq x)=P_X((-\infty,x])
+        \]
+    \end{definition}
+    \begin{definition}[Funkcja prawdopodobieństwa]
+        Rozkład dyskretny zmiennej $X$ jest wyznaczony przez funkcję
+        \[
+            p:\mathcal{S} \to [0,1]
+        \]
+        określoną następująco:
+        \[
+            p(x_k)=P_X(x_k)=P(X=x_k)
+        \]
+        Funkcję $p$ nazywamy funkcją prawdopodobieństwa rozkładu zmiennej $X$.
+    \end{definition}
+    \begin{definition}[Funkcja gęstości]
+        Gęstość zmiennej losowej $X$ to funkcja
+        \[
+            f:\mathbb{R} \to [0,+\infty)
+        \]
+        taka, że dla dowolnych $a,b\in \mathbb{R} \cup \{-\infty,+\infty\}$
+        takich, że $a<b$ zachodzi
+        \[
+            P(a<X<b)=\int_{a}^{b}f(x)dx
+        \]
+    \end{definition}
+    \begin{definition}[Wartość oczekiwana]
+        Wartością oczekiwaną zmiennej losowej rzeczywistej $X$ nazywamy
+        liczbę określoną wzorem
+        \[
+            \mu=\mu_X=E(X)=EX=
+        \]
+    \end{definition}
 
     \section{Literatura}
     \begin{thebibliography}{9}
