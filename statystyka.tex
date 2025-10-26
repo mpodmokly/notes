@@ -307,17 +307,23 @@
         \]
     \end{definition}
     \begin{definition}[Wartość oczekiwana]
-        Wartością oczekiwaną zmiennej losowej rzeczywistej $X$ nazywamy
-        liczbę określoną wzorem
+        Wartością oczekiwaną zmiennej losowej rzeczywistej $X$ o rozkładzie
+        dyskretnym z funkcją prawdopodobieństwa $p$ nazywamy liczbę określoną
+        wzorem
         \[
-            \mu=\mu_X=E(X)=EX=
+            \mu=\mu_X=E(X)=EX=\sum_{k:x_k \in \mathcal{S}}
+            x_kp \cdot (x_k)
+        \]
+        Jeśli $X$ jest zmienną o rozkładzie ciągłym z gęstością $f$, to
+        \[
+            \mu =\int_{-\infty}^{\infty}xf(x)dx
         \]
     \end{definition}
 
     \section{Literatura}
     \begin{thebibliography}{9}
         \bibitem{Smołka} Smołka, M. (2025). Rachunek prawdopodobieństwa
-        i statystyka. \textit{Wykłady prowadzone na Akademii Górniczo-Hutniczej
-        w Krakowie}.
+        i statystyka. \textit{Wykłady prowadzone na Akademii
+        Górniczo-Hutniczej w Krakowie}.
     \end{thebibliography}
 \end{document}
