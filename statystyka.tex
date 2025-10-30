@@ -101,8 +101,7 @@
         \item[$A \cap B= \emptyset$] -- zdarznia wzajemnie się
             wykluczają.
     \end{description}
-    \begin{definition}[Miara probabilistyczna (rozkład
-        prawdopodobieństwa)]
+    \begin{definition}[Miara probabilistyczna (rozkładbprawdopodobieństwa)]
         W przestrzeni $\Omega$ z $\sigma$-algebrą zdarzeń $\Sigma$
         dowolne odwzorowanie
         \[
@@ -286,6 +285,26 @@
             F_X(x)=P(X \leq x)=P_X((-\infty,x])
         \]
     \end{definition}
+    \noindent
+    Własności dystrybuanty:
+    \begin{enumerate}
+        \item Jeśli $a<b$, to $F_X(b)-F_X(a)=P(a<X \leq b)$
+        \item $F_X$ jest niemalejąca
+        \item $\lim\limits_{x \to -\infty}F_X(x)=0$
+            i $\lim\limits_{x \to +\infty}F_X(x)=1$
+        \item $F_X$ jest prawostronnie ciągła, tzn. dla dowolnego
+            $x_0 \in \mathbb{R}$ zachodzi
+            \[
+                \lim_{x \to x_0^+}F_X(x)=F_X(x_0)
+            \]
+        \item $F_X(x_0-)=\lim\limits_{x \to x_0^-}F_X(x)=P(X<x_0)$
+        \item $P(X=x)=F_X(x)-F_X(x-)$
+        \item $F_X$ jest ciągła w $x_0 \in \mathbb{R}$ wtedy i tylko
+            wtedy, gdy
+            \[
+                P(X=x_0)=0
+            \]
+    \end{enumerate}
     \begin{definition}[Funkcja prawdopodobieństwa]
         Rozkład dyskretny zmiennej $X$ jest wyznaczony przez funkcję
         \[
