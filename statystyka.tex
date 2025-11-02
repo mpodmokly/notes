@@ -334,7 +334,7 @@
         dyskretnym z funkcją prawdopodobieństwa $p$ nazywamy liczbę określoną
         wzorem
         \[
-            \mu=\mu_X=E(X)=EX=\sum_{k:x_k \in \mathcal{S}}
+            \mu=E(X)=\sum_{k:x_k \in \mathcal{S}}
             x_k \cdot p(x_k)
         \]
         Jeśli $X$ jest zmienną o rozkładzie ciągłym z gęstością $f$, to
@@ -342,6 +342,84 @@
             \mu =\int_{-\infty}^{\infty}xf(x)dx
         \]
     \end{definition}
+    \begin{definition}[Moment zwykły]
+        Momentem zwykłym rzędu $k$ zmiennej losowej $X$ dla
+        $k \in \mathbb{N} \setminus \{0\}$ nazywamy liczbę
+        \[
+            \mu'_k=E(X^k)
+        \]
+    \end{definition}
+    \begin{definition}[Moment centralny]
+        Momentem centralnym rzędu $k$ zmiennej losowej $X$ nazywamy liczbę
+        \[
+            \mu_k=E((X-\mu)^k)
+        \]
+    \end{definition}
+    \noindent
+    Dla rozkładów dyskretnych
+    \[
+        \mu'_k=\sum_{i:x_i\in \mathcal{S}}x_i^k \cdot p(x_i)
+    \]
+    \[
+        \mu_k=\sum_{i:x_i\in \mathcal{S}}(x_i-\mu)^k \cdot p(x_i)
+    \]
+    Dla rozkładów ciągłych
+    \[
+        \mu'_k=\int_{-\infty}^{\infty}x^kf(x)dx
+    \]
+    \[
+        \mu_k=\int_{-\infty}^{\infty}(x-\mu)^kf(x)dx
+    \]
+    \begin{definition}[Wariancja]
+        Wariancją zmiennej losowej $X$ nazywamy jej drugi moment centralny, tzn.
+        \[
+            Var(X)=\sigma^2=\mu_2=E((X-\mu)^2)
+        \]
+    \end{definition}
+    \begin{definition}[Odchylenie standardowe]
+        Odchyleniem standardowym zmiennej losowej $X$ nazywamy pierwiastek jej
+        wariancji, tzn.
+        \[
+            \sigma=\sqrt{Var(X)}
+        \]
+    \end{definition}
+    \noindent
+    Własności wariancji:
+    \begin{enumerate}
+        \item $Var(X)=E(X^2)-(EX)^2$
+        \item Jeśli zmienna $X$ ma skończoną wariancję, to dla dowolnych
+            $a,b\in \mathbb{R}$ zachodzi
+            \[
+                Var(aX+b)=a^2Var(X)
+            \]
+        \item $Var(X)=0$ wtedy i tylko wtedy, gdy $X$ jest stała
+            z prawdopodobieństwem 1, tzn. istnieje $x_0\in \mathbb{R}$
+            takie, że
+            \[
+                P(X \neq x_0)=0
+            \]
+        \item Funkcja $\phi(c)=E((X-c)^2)$ przyjmuje wartość najmniejszą dla
+            $c=E(X)$
+    \end{enumerate}
+    \begin{definition}[Standaryzacja]
+        Zmienną o wartości średniej 0 i wariancji 1 nazywa się zmienną
+        standaryzowaną. Jeśli $X$ jest dowolną zmienną o niezerowej wariancji, to
+        \[
+            Z=\frac{X-\mu}{\sigma}
+        \]
+        jest zmienną standaryzowaną.
+    \end{definition}
+    \begin{theorem}[Nierówność Czebyszewa]
+        Jeśli zmienna losowa $X$ ma skończoną wartość średnią $\mu$ i skończoną
+        wariancję $\sigma^2$, to dla dowolnego $\epsilon>0$ zachodzi
+        \[
+            P(|X-\mu|\geq \epsilon) \leq \frac{\sigma^2}{\epsilon^2}
+        \]
+        Jeśli w miejsce $\epsilon$ podstawimy $\epsilon \sigma$, to otrzymamy
+        \[
+            P(|X-\mu|\geq \epsilon \sigma) \leq \frac{1}{\epsilon^2}
+        \]
+    \end{theorem}
 
     \section{Literatura}
     \begin{thebibliography}{9}
