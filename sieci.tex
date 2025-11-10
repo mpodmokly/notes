@@ -1,0 +1,72 @@
+\documentclass[11pt, leqno]{scrartcl}
+\usepackage{polski}
+\usepackage[polish]{babel}
+
+\usepackage{graphicx, float, caption, subcaption}
+\usepackage{tabularx, multirow, hyperref, enumitem}
+\usepackage{listings, xcolor}
+\usepackage{amsmath, amssymb}
+\usepackage{amsthm}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=black,
+    citecolor=black
+}
+
+\makeatletter
+\renewcommand{\thebibliography}[1]{%
+  \list{\@biblabel{\@arabic\c@enumiv}}%
+       {\settowidth\labelwidth{\@biblabel{#1}}%
+        \leftmargin\labelwidth
+        \advance\leftmargin\labelsep
+        \usecounter{enumiv}%
+        \let\p@enumiv\@empty
+        \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+  \sloppy\clubpenalty4000\widowpenalty4000%
+  \sfcode`\.=1000\relax}
+\makeatother
+
+\title{Sieci komputerowe}
+\author{Mateusz Podmokły III rok Informatyka WI}
+\date{semestr zimowy 2025}
+
+\begin{document}
+    \maketitle
+    \tableofcontents
+    \newpage
+
+    \section{Spanning Tree Protocol (STP)}
+    \subsection{Wybór Root Bridge}
+    priorytet = Bridge ID (BID) + MAC \\
+    Najpierw używane jest BID, ewentualnie, jak remis, to MAC. Root
+    Bridge zostaje urządzenie o najmniejszej wartości BID + MAC,
+    czyli najwyższy priorytet.
+    
+    \subsection{Wybór Root Port}
+    Dla każdego switcha wybierany jest jeden Root Port, który
+    prowadzi najtańszą ścieżką do Root Bridge. Jeśli kilka portów
+    ma ten sam koszt, to używane są następujące kryteria:
+    \begin{enumerate}
+        \item Root Path Cost - najmniejszy łączny koszt ścieżki do
+            Root Bridge
+        \item Lowest Sender BID - priorytet nadrzędnego switcha
+        \item Lowest Port ID (PID) - numer portu nadawcy
+        \item Local PID - numer lokalnego portu
+    \end{enumerate}
+
+    \subsection{Wybór Designated Port}
+    Wszystkie porty Root Bridge są Designated Port. Dla każdego
+    segmentu sieci wybierany jest jeden Designated Port na podstawie
+    następujących kryteriów:
+    \begin{enumerate}
+        \item Root Path Cost - najmniejszy łączny koszt ścieżki do
+            Root Bridge
+        \item Lowest BID - priorytet switcha
+        \item Lowest PID - numer portu
+    \end{enumerate}
+
+    \subsection{Wybór Blocking Port}
+    Wszystkie pozostałe porty zostają Blocking Port.
+\end{document}
