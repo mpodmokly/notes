@@ -349,15 +349,6 @@
             \mu'_k=E(X^k)
         \]
     \end{definition}
-    \noindent
-    Dla rozkładów dyskretnych
-    \[
-        \mu'_k=\sum_{i:x_i\in \mathcal{S}}x_i^k \cdot p(x_i)
-    \]
-    Dla rozkładów ciągłych
-    \[
-        \mu'_k=\int_{-\infty}^{\infty}x^kf(x)dx
-    \]
     \begin{definition}[Moment centralny]
         Momentem centralnym rzędu $k$ zmiennej losowej $X$ nazywamy liczbę
         \[
@@ -367,9 +358,15 @@
     \noindent
     Dla rozkładów dyskretnych
     \[
+        \mu'_k=\sum_{i:x_i\in \mathcal{S}}x_i^k \cdot p(x_i)
+    \]
+    \[
         \mu_k=\sum_{i:x_i\in \mathcal{S}}(x_i-\mu)^k \cdot p(x_i)
     \]
     Dla rozkładów ciągłych
+    \[
+        \mu'_k=\int_{-\infty}^{\infty}x^kf(x)dx
+    \]
     \[
         \mu_k=\int_{-\infty}^{\infty}(x-\mu)^kf(x)dx
     \]
