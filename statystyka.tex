@@ -349,15 +349,6 @@
             \mu'_k=E(X^k)
         \]
     \end{definition}
-    \noindent
-    Dla rozkładów dyskretnych
-    \[
-        \mu'_k=\sum_{i:x_i\in \mathcal{S}}x_i^k \cdot p(x_i)
-    \]
-    Dla rozkładów ciągłych
-    \[
-        \mu'_k=\int_{-\infty}^{\infty}x^kf(x)dx
-    \]
     \begin{definition}[Moment centralny]
         Momentem centralnym rzędu $k$ zmiennej losowej $X$ nazywamy liczbę
         \[
@@ -367,9 +358,15 @@
     \noindent
     Dla rozkładów dyskretnych
     \[
+        \mu'_k=\sum_{i:x_i\in \mathcal{S}}x_i^k \cdot p(x_i)
+    \]
+    \[
         \mu_k=\sum_{i:x_i\in \mathcal{S}}(x_i-\mu)^k \cdot p(x_i)
     \]
     Dla rozkładów ciągłych
+    \[
+        \mu'_k=\int_{-\infty}^{\infty}x^kf(x)dx
+    \]
     \[
         \mu_k=\int_{-\infty}^{\infty}(x-\mu)^kf(x)dx
     \]
@@ -404,6 +401,28 @@
         \item Funkcja $\phi(c)=E((X-c)^2)$ przyjmuje wartość najmniejszą dla
             $c=E(X)$
     \end{enumerate}
+    \begin{definition}[Współczynnik asymetrii (skośność)]
+        Współczynnikiem skośności rozkładu zmiennej $X$ nazywamy liczbę
+        \[
+            A=\gamma_1=\frac{\mu_3}{\sigma^3}
+        \]
+        Rozkład, dla którego:
+        \begin{itemize}
+            \item $A=0$ nazywa się \textbf{symetrycznym}
+            \item $A>0$ nazywa się \textbf{prawostronnie skośnym}
+            \item $A<0$ nazywa się \textbf{lewostronnie skośnym}
+        \end{itemize}
+    \end{definition}
+    \begin{definition}[Kurtoza]
+        Kurtozą nazywamy liczbę
+        \[
+            Kurt(X)=K=\frac{\mu_4}{\sigma^4}
+        \]
+        natomiast \textbf{kurtozą nadwyżkową} nazywamy liczbę
+        \[
+            \gamma_3=Kurt(X)-3
+        \]
+    \end{definition}
     \begin{definition}[Standaryzacja]
         Zmienną o wartości średniej 0 i wariancji 1 nazywa się zmienną
         standaryzowaną. Jeśli $X$ jest dowolną zmienną o niezerowej wariancji, to
