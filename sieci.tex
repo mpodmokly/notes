@@ -39,21 +39,23 @@
 
     \section{Spanning Tree Protocol (STP)}
     \subsection{Wybór Root Bridge}
-    priorytet = Bridge ID (BID) + MAC \\
-    Najpierw używane jest BID, ewentualnie, jak remis, to MAC. Root
-    Bridge zostaje urządzenie o najmniejszej wartości BID + MAC,
-    czyli najwyższy priorytet.
+    \begin{center}
+        Bridge ID (BID) = priorytet + MAC
+    \end{center}
+    Najpierw używany jest priorytet switcha, ewentualnie, jak remis,
+    to MAC. Root Bridge zostaje urządzenie o najmniejszej wartości
+    BID + MAC, czyli najwyższy priorytet.
     
     \subsection{Wybór Root Port}
-    Dla każdego switcha wybierany jest jeden Root Port, który
-    prowadzi najtańszą ścieżką do Root Bridge. Jeśli kilka portów
-    ma ten sam koszt, to używane są następujące kryteria:
+    Dla każdego switcha wybierany jest jeden Root Port, który prowadzi
+    najtańszą ścieżką do Root Bridge. Do rozstrzygania remisów używane
+    są następujące kryteria:
     \begin{enumerate}
         \item Root Path Cost - najmniejszy łączny koszt ścieżki do
             Root Bridge
         \item Lowest Sender BID - priorytet nadrzędnego switcha
         \item Lowest Port ID (PID) - numer portu nadawcy
-        \item Local PID - numer lokalnego portu
+        \item Local PID - lokalny numer portu
     \end{enumerate}
 
     \subsection{Wybór Designated Port}
@@ -69,4 +71,46 @@
 
     \subsection{Wybór Blocking Port}
     Wszystkie pozostałe porty zostają Blocking Port.
+
+    \section{Rodzaje adresów fizycznych}
+    \subsection{Unicast}
+    \subsection{Multicast}
+    \subsection{Broadcast}
+    FF:FF:FF:FF:FF:FF
+    \section{Sposoby przełączania ramek w switchach}
+    \subsection{Store-and-forward}
+    \subsection{Cut-through}
+    \subsubsection{Fast-forward}
+    \subsubsection{Fragment-free}
+
+    \section{Kodowania}
+    \subsection{NRZ (Non return to zero)}
+    \subsection{NRZ-I (Non return to zero inverted)}
+    \subsection{Manchester}
+    Kodowanie zboczem 0 zbocze malejące, 1 zbocze rosnące.
+    \subsection{Manchester różnicowy}
+    Też zbocze, ale 0 powtarza poprzednie zbocze, a 1 odwraca
+    poprzednie zbocze.
+
+    \section{Trunkowanie VLANów}
+    \subsection{TDM (Time division multiplexing)}
+    \subsection{Filtrowanie}
+    Tablica MAC-VLAN
+    \subsection{Tagowanie}
+    VLAN TAG do ramki Ehternet między adres nadawcy, a typ. Ma
+    rozmiar 4B.
+
+    \section{CSMA/CD}
+    Carrier Sense Multiple Access with Collision Detection.
+    \subsection{Carrier Sense (CS)}
+    Każda stacja cały czas monitoruje medium.
+    \subsection{Multiple Access (MA)}
+    Każda stacja, która widzi wolne medium, może nadawać. Czeka
+    InterFrame Gap (IFG) równe czasowi przesłania 96 bitów. Występują
+    kolizje, jeżeli dwie stacje nadają naraz.
+    \subsection{Collision Detection (CD)}
+    Po stwierdzeniu wystąpienia kolizji wysyłany jest sygnał
+    zagłuszający, stacja czeka losową liczbę szczelin czasowych
+    i ponawia próbę transmisji. Jeśli po 15 próbach się nie powiedzie,
+    to zgłasza błąd transmisji.
 \end{document}
