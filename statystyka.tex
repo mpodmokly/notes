@@ -334,7 +334,7 @@
         dyskretnym z funkcją prawdopodobieństwa $p$ nazywamy liczbę określoną
         wzorem
         \[
-            \mu=E(X)=\sum_{k:x_k \in \mathcal{S}}
+            \mu=\mathbb{E}(X)=\sum_{k:x_k \in \mathcal{S}}
             x_k \cdot p(x_k)
         \]
         Jeśli $X$ jest zmienną o rozkładzie ciągłym z gęstością $f$, to
@@ -342,17 +342,23 @@
             \mu =\int_{-\infty}^{\infty}xf(x)dx
         \]
     \end{definition}
+    \noindent
+    Własności wartości oczekiwanej:
+    \begin{enumerate}
+        \item $\mathbb{E}c=c$
+        \item $\mathbb{E}(aX+bY+c)=a\mathbb{E}X+b\mathbb{E}Y+c$
+    \end{enumerate}
     \begin{definition}[Moment zwykły]
         Momentem zwykłym rzędu $k$ zmiennej losowej $X$ dla
         $k \in \mathbb{N} \setminus \{0\}$ nazywamy liczbę
         \[
-            \mu'_k=E(X^k)
+            \mu'_k=\mathbb{E}(X^k)
         \]
     \end{definition}
     \begin{definition}[Moment centralny]
         Momentem centralnym rzędu $k$ zmiennej losowej $X$ nazywamy liczbę
         \[
-            \mu_k=E((X-\mu)^k)
+            \mu_k=\mathbb{E}((X-\mu)^k)
         \]
     \end{definition}
     \noindent
@@ -373,7 +379,7 @@
     \begin{definition}[Wariancja]
         Wariancją zmiennej losowej $X$ nazywamy jej drugi moment centralny, tzn.
         \[
-            Var(X)=\sigma^2=\mu_2=E((X-\mu)^2)
+            Var(X)=\sigma^2=\mu_2=\mathbb{E}((X-\mu)^2)
         \]
     \end{definition}
     \begin{definition}[Odchylenie standardowe]
@@ -386,7 +392,7 @@
     \noindent
     Własności wariancji:
     \begin{enumerate}
-        \item $Var(X)=E(X^2)-(EX)^2$
+        \item $Var(X)=\mathbb{E}(X^2)-(\mathbb{E}X)^2$
         \item Jeśli zmienna $X$ ma skończoną wariancję, to dla dowolnych
             $a,b\in \mathbb{R}$ zachodzi
             \[
@@ -398,8 +404,32 @@
             \[
                 P(X \neq x_0)=0
             \]
-        \item Funkcja $\phi(c)=E((X-c)^2)$ przyjmuje wartość najmniejszą dla
-            $c=E(X)$
+        \item Funkcja $\phi(c)=\mathbb{E}((X-c)^2)$ przyjmuje wartość
+            najmniejszą dla $c=\mathbb{E}(X)$
+    \end{enumerate}
+    \begin{definition}[Funkcja tworząca momenty (MGF)]
+        Funkjcą tworzącą momenty rzeczywistej zmiennej losowej $X$
+        nazywa się funkcję określoną wzorem
+        \[
+            M_X(t)=\mathbb{E}\left(e^{tX}\right)
+        \]
+    \end{definition}
+    Jeśli $X$ ma rozkład dyskretny z funkcją prawdopodobieństwa $p$, to funkcja
+    tworząca momenty wyraża się wzorem
+    \[
+        M_X(t)=\sum_{x_k\in \mathcal{S}}e^{tx_k}p(x_k)
+    \]
+    Jeśli $X$ ma rozkład ciągły o gęstości $f$, to funkcja tworząca momenty ma
+    postać
+    \[
+        M_X(t)=\int_{-\infty}^{+\infty}e^{tx}f(x)dx
+    \]
+    Niech $a,b \in \mathbb{R}$. Własności MGF:
+    \begin{enumerate}
+        \item $M_{aX}(t)=M_X(at)$
+        \item $M_{X+b}(t)=e^{bt}M_X(t)$
+        \item $M_{aX+b}(t)=e^{bt}M_X(at)$
+        \item $M^{(k)}(0)=\mathbb{E}(X^k)$
     \end{enumerate}
     \begin{definition}[Współczynnik asymetrii (skośność)]
         Współczynnikiem skośności rozkładu zmiennej $X$ nazywamy liczbę
