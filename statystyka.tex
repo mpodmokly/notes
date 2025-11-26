@@ -27,16 +27,6 @@
 \theoremstyle{mytheorem}
 \newtheorem{theorem}{Twierdzenie}[subsection]
 
-% \newtheoremstyle{style name}
-% {space above}
-% {space below}
-% {body font}
-% {indent amount}
-% {head font}
-% {head punct}
-% {after head space}
-% {head spec}
-
 \makeatletter
 \renewcommand{\thebibliography}[1]{%
   \list{\@biblabel{\@arabic\c@enumiv}}%
@@ -49,6 +39,8 @@
   \sloppy\clubpenalty4000\widowpenalty4000%
   \sfcode`\.=1000\relax}
 \makeatother
+
+\graphicspath{{images/}}
 
 \title{Rachunek prawdopodobieństwa i statystyka}
 \author{Mateusz Podmokły III rok Informatyka WI}
@@ -496,7 +488,68 @@
     
     \section{Wybrane rozkłady prawdopodobieństwa}
     \subsection{Rozkłady dyskretne}
-    \subsubsection{Rozkład jednopunktowy}
+    \begin{definition}[Rozkład jednopunktowy]
+        Jeśli $\mathcal{S}=\{x_0\}$ i $p(x_0)=1$, to mówimy, że zmienna losowa
+        ma \textbf{rozkład jednopunktowy}. Wtedy przyjmuje parametry:
+        \[
+            \mu=x_0
+        \]
+        \[
+            \sigma^2=0
+        \]
+        \[
+            A=0
+        \]
+        \[
+            K=0
+        \]
+        \[
+            \gamma_2=-3
+        \]
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\linewidth]{jednopunktowy.png}
+            \caption{Funkcja prawdopodobieństwa w rozkładzie
+                jednopunktowym.}
+        \end{figure}
+    \end{definition}
+    \begin{definition}[Rozkład dwupunktowy]
+        Jeśli
+        \[
+            \mathcal{S}=\{x_1,x_2\}
+        \]
+        oraz
+        \[
+            p(x_1)=\theta
+        \]
+        \[
+            p(x_2)=1-\theta
+        \]
+        dla pewnego $\theta \in (0,1)$, to mówimy, że zmienna losowa ma
+        \textbf{rozkład dwupunktowy} z parametrem $\theta$. Wtedy
+        przyjmuje parametry:
+        \[
+            \mu=\theta x_1+(1-\theta)x_2
+        \]
+        \[
+            \sigma^2=\theta(1-\theta)(x_1-x_2)^2
+        \]
+        \[
+            A=sgn(x_1-x_2)\frac{1-2\theta}{\sqrt{\theta(1-\theta)}}
+        \]
+        \[
+            K=\frac{1-3\theta+3\theta^2}{\theta(1-\theta)}
+        \]
+        \[
+            \gamma_2=\frac{1-6\theta+6\theta^2}{\theta(1-\theta)}
+        \]
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\linewidth]{dwupunktowy.png}
+            \caption{Funkcja prawdopodobieństwa w rozkładzie
+                dwupunktowym.}
+        \end{figure}
+    \end{definition}
 
     \section{Literatura}
     \begin{thebibliography}{9}
