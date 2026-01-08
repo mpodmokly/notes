@@ -72,45 +72,47 @@
     \subsection{Wybór Blocking Port}
     Wszystkie pozostałe porty zostają Blocking Port.
 
-    \section{Rodzaje adresów fizycznych}
-    \subsection{Unicast}
-    \subsection{Multicast}
-    \subsection{Broadcast}
-    FF:FF:FF:FF:FF:FF
-    \section{Sposoby przełączania ramek w switchach}
-    \subsection{Store-and-forward}
-    \subsection{Cut-through}
-    \subsubsection{Fast-forward}
-    \subsubsection{Fragment-free}
+    \section{Tablica forwardingu}
+    \subsection{Uczenie się (Learning)}
+    Switch odbiera ramkę Ethernet od danego urządzenia z jakiegoś swojego portu.
+    Jeżeli danego adresu MAC nie ma jeszcze w tablicy, to switch dodaje wpis do
+    tablicy forwardingu w postaci MAC $\rightarrow$ port.
+
+    \subsection{Przekazywanie (Forwarding)}
+    Jeżeli switch ma adres docelowy w tablicy forwardingu, to wie na który port
+    przesłać ramkę. Natomiast jeżeli nie ma, to przesyła ją na wszystkie porty
+    z wyjątkiem portu, z którego przyszła.
+
+    \section{Address Resolution Protocol (ARP)}
+    \subsection{Sprawdzenie sieci}
+    Urządzenie sprawdza, czy docelowy adres IP jest w tej samej sieci. Jeśli tak, to
+    wysyła zapytanie ARP o adres docelowy, a jeśli nie to wysyła zapytanie ARP
+    o adres bramy domyślnej i później tam prześle pakiet. Dalej ARP działa też
+    w kolejnych sieciach na drodze pakietu zgodnie z tablicami routingu.
+
+    \subsection{Żądanie ARP}
+    Urządzenie wysyła komunikat rozgłoszeniowy \texttt{ARP Request} (broadcast) do
+    wszystkich w sieci lokalnej pytając kto ma docelowy adres IP, którego poszukuje.
+    Oczekuje adresu MAC tego urządzenia.
+
+    \subsection{Odpowiedź ARP}
+    Tylko urządzenie o wskazanym adresie IP odpowiada komunikatem bezpośrednim
+    \texttt{ARP Reply} wysyłając swój adres MAC. Przy okazji zapisuje w swojej
+    tablicy ARP adres MAC urządzenia, które przysłało zapytanie. Pozostałe urządzenia
+    w sieci (świadkowie) ignorują zapytanie.
+
+    \subsection{Zapis w tablicy ARP}
+    Urządzenie źródłowe zapisuje otrzymaną parę IP $\rightarrow$ MAC w swojej tablicy
+    ARP. Przy następnej komunikacji już nie musi ponownie wysyłać zapytania.
+
+    \subsection{Proxy ARP}
+    Jeżeli urządzenie myśli, że adres docelowy jest w tej samej sieci (np. przez
+    maskę), to wysyła zapytanie ARP w sieci lokalnej. Wtedy, w przypadku włączonego
+    Proxy ARP, router odpowiada na to zapytanie, że to jego adres IP, jeżeli wie, że
+    docelowy adres IP jest osiągalny przez jego inny interfejs.
 
     \section{Kodowania}
-    \subsection{NRZ (Non return to zero)}
-    \subsection{NRZ-I (Non return to zero inverted)}
-    \subsection{Manchester}
-    Kodowanie zboczem 0 zbocze malejące, 1 zbocze rosnące.
-    \subsection{Manchester różnicowy}
-    Też zbocze, ale 0 powtarza poprzednie zbocze, a 1 odwraca
-    poprzednie zbocze.
-
-    \section{Trunkowanie VLANów}
-    \subsection{TDM (Time division multiplexing)}
-    \subsection{Filtrowanie}
-    Tablica MAC-VLAN
-    \subsection{Tagowanie}
-    VLAN TAG do ramki Ehternet między adres nadawcy, a typ. Ma
-    rozmiar 4B.
-
-    \section{CSMA/CD}
-    Carrier Sense Multiple Access with Collision Detection.
-    \subsection{Carrier Sense (CS)}
-    Każda stacja cały czas monitoruje medium.
-    \subsection{Multiple Access (MA)}
-    Każda stacja, która widzi wolne medium, może nadawać. Czeka
-    InterFrame Gap (IFG) równe czasowi przesłania 96 bitów. Występują
-    kolizje, jeżeli dwie stacje nadają naraz.
-    \subsection{Collision Detection (CD)}
-    Po stwierdzeniu wystąpienia kolizji wysyłany jest sygnał
-    zagłuszający, stacja czeka losową liczbę szczelin czasowych
-    i ponawia próbę transmisji. Jeśli po 15 próbach się nie powiedzie,
-    to zgłasza błąd transmisji.
+    Manchester koduje zboczem, 0 zbocze malejące, 1 zbocze rosnące. Manchester
+    różnicowy też zbocze, ale 0 powtarza poprzednie zbocze, a 1 odwraca poprzednie
+    zbocze.
 \end{document}
