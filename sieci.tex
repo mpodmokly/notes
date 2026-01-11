@@ -72,7 +72,7 @@
     \subsection{Wybór Blocking Port}
     Wszystkie pozostałe porty zostają Blocking Port.
 
-    \section{Tablica forwardingu}
+    \section{Tablica forwardingu (FDB)}
     \subsection{Uczenie się (Learning)}
     Switch odbiera ramkę Ethernet od danego urządzenia z jakiegoś swojego portu.
     Jeżeli danego adresu MAC nie ma jeszcze w tablicy, to switch dodaje wpis do
@@ -111,8 +111,26 @@
     Proxy ARP, router odpowiada na to zapytanie, że to jego adres IP, jeżeli wie, że
     docelowy adres IP jest osiągalny przez jego inny interfejs.
 
-    \section{Kodowania}
-    Manchester koduje zboczem, 0 zbocze malejące, 1 zbocze rosnące. Manchester
-    różnicowy też zbocze, ale 0 powtarza poprzednie zbocze, a 1 odwraca poprzednie
-    zbocze.
+    \section{Routing}
+    \subsection{EIGRP}
+    Protokół dla każdej ścieżki do danej sieci oblicza wartość metryki i wybiera
+    ścieżkę z najniższą metryką, wg wzoru
+    \[
+        M=256 \cdot (K_1B+K_3D)
+    \]
+    gdzie
+    \[
+        B=\frac{10^7}{min(\text{bandwith na ścieżce})(\text{kbps})}
+    \]
+    \[
+        D=\frac{\sum \text{delay}(\mu s)}{10}
+    \]
+    Jeżeli dwie ścieżki mają tę samą wartość metryki, to zazwyczaj zostaną ustawione
+    obydwie jako opcja load balancing (chyba że w konfiguracji ustawiono inaczej).
+
+    \section{Literatura}
+    \begin{thebibliography}{9}
+        \bibitem{Zieliński} Zieliński, K. (2026). Sieci komputerowe. \textit{Wykłady
+        prowadzone na Akademii Górniczo-Hutniczej w Krakowie}.
+    \end{thebibliography}
 \end{document}
