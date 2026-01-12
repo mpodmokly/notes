@@ -128,6 +128,50 @@
     Jeżeli dwie ścieżki mają tę samą wartość metryki, to zazwyczaj zostaną ustawione
     obydwie jako opcja load balancing (chyba że w konfiguracji ustawiono inaczej).
 
+    \subsection{OSPF}
+    Wykorzystuje prostszą metrykę do wyznaczania najlepszej trasy, wg wzoru
+    \[
+        M=\sum\frac{10^8}{B}
+    \]
+    gdzie $B$ to przepustowość interfejsu. Sumujemy po wszystkich interfejsach
+    wychodzących na trasie do sieci docelowej. Wybiera trasę z najniższą wartością
+    metryki.
+
+    \subsection{RIP}
+    Jako metrykę wykorzystuje liczbę routerów (hopów) po drodze do sieci docelowej.
+    Im mniej tym lepiej.
+    
+    \section{Fragmentacja IP}
+    W momencie, kiedy wielkość pakietu IP przekracza Maximum Transmission Unit (MTU)
+    łącza, pakiet jest dzielony na mniejsze takie, żeby wielkość danych razem
+    z nagłówkiem IP (20B) zmieściła się na danym łączu. Jeżeli fragment nie mieści się
+    w dalszej części trasy na jakimś łączu do jest dalej odpowiednio dzielony. Pakiet
+    składany jest w całość dopiero przez hosta docelowego. Tabela przedstawia pola
+    związane z fragmentacją pakietów:
+    \begin{table}[H]
+        \centering
+        \renewcommand{\arraystretch}{1.7}
+        \begin{tabular}{|c|c|c|c|c|}
+            \hline
+            \textbf{ID} & \textbf{R} & \textbf{DF} & \textbf{MF} & \textbf{Offset} \\
+            \hline
+            * & 0 & 0 & 1 & 0 \\
+            \hline
+            * & 0 & 0 & 0 & 122 \\
+            \hline
+        \end{tabular}
+        \caption{Przykładowe wartości pól.}
+    \end{table}
+    \begin{description}
+        \item[ID]- identyfikator pakietu,
+        \item[R]- bit zarezerwowany,
+        \item[DF]- \textit{Don't Fragment}, zakaz podziału pakietu,
+        \item[MF]- \textit{More Fragments}, jeśli 1, to będzie więcej fragmentów
+            pakietu, a 0 oznacza ostatni fragment,
+        \item[Offset]- pozycja danego fragmentu w oryginalnym pakiecie, liczona
+            w blokach po 8B.
+    \end{description}
+
     \section{Literatura}
     \begin{thebibliography}{9}
         \bibitem{Zieliński} Zieliński, K. (2026). Sieci komputerowe. \textit{Wykłady
