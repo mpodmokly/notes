@@ -133,13 +133,12 @@
     \[
         M=\sum\frac{10^8}{B}
     \]
-    gdzie $B$ to przepustowość interfejsu. Sumujemy po wszystkich interfejsach
-    wychodzących na trasie do sieci docelowej. Wybiera trasę z najniższą wartością
-    metryki.
+    gdzie $B$ to przepustowość łącza. Sumujemy po wszystkich łączach na trasie do
+    sieci docelowej włącznie. Wybiera trasę z najniższą wartością metryki.
 
     \subsection{RIP}
     Jako metrykę wykorzystuje liczbę routerów (hopów) po drodze do sieci docelowej.
-    Im mniej tym lepiej.
+    Im mniej tym lepiej, 16 hopów oznacza nieskończoność.
     
     \section{Fragmentacja IP}
     W momencie, kiedy wielkość pakietu IP przekracza Maximum Transmission Unit (MTU)
