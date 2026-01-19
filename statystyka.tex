@@ -593,6 +593,40 @@
         Doświadczenie tego rodzaju nazywamy
         \textbf{próbą Bernoulli'ego}.
     \end{definition}
+    \begin{definition}[Schemat dwumianowy]
+        Schemat doświadczenia określony jako n-krotne powtórzenie próby
+        Bernoulli'ego w ten sposób, że poszczególne próby są niezależne.
+        Długość schematu może być skończona lub nieskończona.
+    \end{definition}
+    \begin{definition}[Rozkład dwumianowy]
+        Niech $X$ będzie zmienną losową, której wartością jest liczba
+        sukcesów w schemacie dwumianowym o długości $n$ z prawdopodobieństwem
+        sukcesu $\theta$. Wówczas $X$ ma rozkład dyskretny, w którym
+        \[
+            \mathcal{S}=\{0,1,\ldots,n\}
+        \]
+        oraz
+        \[
+            p(k)=\binom{n}{k}\theta^k(1-\theta)^{n-k}
+        \]
+        Jeśli zmienna $X$ ma rozkład dwumianowy o parametrach $n\in \mathbb{N}$
+        i $\theta \in (0,1)$, to zapisujemy
+        \[
+            X \sim Binom(n,\theta)
+        \]
+        oraz
+        \[
+            \mu=n\theta
+        \]
+        \[
+            \sigma^2=n\theta(1-\theta)
+        \]
+        Łatwo zauważyć, że
+        \[
+            Binom(1,\theta)=Bern(\theta).
+        \]
+        
+    \end{definition}
 
     \section{Literatura}
     \begin{thebibliography}{9}
