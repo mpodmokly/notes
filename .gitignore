@@ -5,5 +5,3 @@
 *.out
 *.gz
 *.toc
-
-graphs.py

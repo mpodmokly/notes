@@ -374,13 +374,6 @@
             Var(X)=\sigma^2=\mu_2=\mathbb{E}((X-\mu)^2)
         \]
     \end{definition}
-    \begin{definition}[Odchylenie standardowe]
-        Odchyleniem standardowym zmiennej losowej $X$ nazywamy pierwiastek jej
-        wariancji, tzn.
-        \[
-            \sigma=\sqrt{Var(X)}
-        \]
-    \end{definition}
     \noindent
     Własności wariancji:
     \begin{enumerate}
@@ -390,15 +383,21 @@
             \[
                 Var(aX+b)=a^2Var(X)
             \]
+        \item $Var(X+Y)=Var(X)+Var(Y)+2Cov(X,Y)$
         \item $Var(X)=0$ wtedy i tylko wtedy, gdy $X$ jest stała
             z prawdopodobieństwem 1, tzn. istnieje $x_0\in \mathbb{R}$
             takie, że
             \[
                 P(X \neq x_0)=0
             \]
-        \item Funkcja $\phi(c)=\mathbb{E}((X-c)^2)$ przyjmuje wartość
-            najmniejszą dla $c=\mathbb{E}(X)$
     \end{enumerate}
+    \begin{definition}[Odchylenie standardowe]
+        Odchyleniem standardowym zmiennej losowej $X$ nazywamy pierwiastek jej
+        wariancji, tzn.
+        \[
+            \sigma=\sqrt{Var(X)}
+        \]
+    \end{definition}
     \begin{definition}[Funkcja tworząca momenty (MGF)]
         Funkjcą tworzącą momenty rzeczywistej zmiennej losowej $X$
         nazywa się funkcję określoną wzorem
@@ -625,8 +624,97 @@
         \[
             Binom(1,\theta)=Bern(\theta).
         \]
-        
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\linewidth]
+                {dwumianowy.png}
+            \caption{Funkcja prawdopodobieństwa w rozkładzie dwumianowym.}
+        \end{figure}
     \end{definition}
+    \begin{definition}[Rozkład geometryczny]
+        Zmienna losowa $T$ ma rozkład geometryczny z parametrem
+        $\theta \in (0,1)$
+        \[
+            T \sim Geom(\theta),
+        \]
+        jeśli
+        \[
+            \mathcal{S}=\mathbb{N}\setminus \{0\},
+        \]
+        a funkcja prawdopodobieństwa ma postać
+        \[
+            p(k)=(1-\theta)^{k-1}\theta
+        \]
+        \[
+            k\in\mathcal{S}
+        \]
+        Zmienna $T$ opisuje czas oczekiwania na pierwszy sukces w schemacie
+        dwumianowym (o nieskończonej długości). Wówczas
+        \[
+            \mu=\frac{1}{\theta}
+        \]
+        \[
+            \sigma^2=\frac{1-\theta}{\theta^2}
+        \]
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\linewidth]
+                {geometryczny.png}
+            \caption{Funkcja prawdopodobieństwa w rozkładzie geometrycznym.}
+        \end{figure}
+    \end{definition}
+    \begin{definition}[Rozkład Poissona]
+        Jeśli zmienna $N$ o wartościach w $N$ opisuje liczbę wystąpień
+        pewnego powtarzalnego zdarzenia w przedziale czasowym $[0,t]$, przy
+        czym spełnione są założenia:
+        \begin{itemize}
+            \item powtórzenia zdarzenia występują niezależnie od siebie,
+            \item intensywność wystąpień $r>0$, czyli średnia liczba
+                wystąpień w jednostce czasu jest stała,
+            \item w danej chwili może zajść co najwyżej jedno powtórzenie,
+        \end{itemize}
+        to zmienna ma rozkład Poissona z parametrem $\lambda=rt$
+        \[
+            N \sim Pois(\lambda).
+        \]
+        Wówczas
+        \[
+            \mathcal{S}=\mathbb{N} \cup \{0\}
+        \]
+        \[
+            p(k)=\frac{e^{-\lambda}\lambda^k}{k!}
+        \]
+        \[
+            k\in \mathcal{S}
+        \]
+        oraz
+        \[
+            \mu=\lambda
+        \]
+        \[
+            \sigma^2=\lambda
+        \]
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\linewidth]
+                {poissona.png}
+            \caption{Funkcja prawdopodobieństwa w rozkładzie Poissona.}
+        \end{figure}
+    \end{definition}
+    \begin{theorem}[Twierdzenie Poissona]
+        Niech $X_n$ będzie ciągiem zmiennych losowych takich, że
+        \[
+            X_n \sim Binom(n,\theta_n),
+        \]
+        gdzie $\theta_n$ jest takim ciągiem, że
+        \[
+            \lim_{n \to \infty} n\theta_n=\lambda
+        \]
+        dla pewnej liczby $\lambda>0$. Wówczas
+        \[
+            \lim_{n \to \infty} P(X_n=k)=\frac{e^{-\lambda}\lambda^k}{k!}.
+        \]
+    \end{theorem}
 
     \section{Literatura}
     \begin{thebibliography}{9}
