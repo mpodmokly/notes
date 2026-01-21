@@ -1,19 +1,31 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.stats import poisson
+from scipy.stats import gamma
 
 
-plt.plot([0, 4], [0.25, 0.25])
-plt.scatter([0, 4], [0.25, 0.25])
+x = np.linspace(0, 10, 1000)
 
-plt.plot([-3, 0], [0, 0], c="C0")
-plt.plot([4, 7], [0, 0], c="C0")
-plt.xlim(-2, 6)
+shape = 5
 
-# bottom = 
-plt.ylim(plt.ylim()[0], 0.4)
+rate = 1
+y = gamma.pdf(x, a=shape, scale=1/rate)
+plt.plot(x, y, label=r"$s=5,r=1$")
 
-plt.xlabel("X")
-plt.ylabel("p(x)")
-plt.title("Funkcja prawdopodobieństwa")
+rate = 1.25
+y = gamma.pdf(x, a=shape, scale=1/rate)
+plt.plot(x, y, c="red", label=r"$s=5,r=1.25$")
+
+rate = 2
+y = gamma.pdf(x, a=shape, scale=1/rate)
+plt.plot(x, y, c="green", label=r"$s=5,r=2$")
+
+rate = 4
+y = gamma.pdf(x, a=shape, scale=1/rate)
+plt.plot(x, y, c="lightblue", label=r"$s=5,r=4$")
+
+plt.legend()
+
+plt.xlabel(r"$X$")
+plt.ylabel(r"$f(x)$")
+plt.title("Funkcja gęstości")
 plt.show()

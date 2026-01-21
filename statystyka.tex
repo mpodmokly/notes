@@ -738,12 +738,12 @@
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.8\linewidth]{jednostajny.png}
-            \caption{Funkcja prawdopodobieństwa w rozkładzie jednostajnym.}
+            \caption{Funkcja gęstości w rozkładzie jednostajnym.}
         \end{figure}
     \end{definition}
     \begin{definition}[Rozkład wykładniczy]
         Niech $T$ będzie zmienną modelującą czas oczekiwania na pierwsze
-        zdarzenie w ciągu zdarzeń takim, że ich liczba w przedziale $[0,5]$
+        zdarzenie w ciągu zdarzeń takim, że ich liczba w przedziale $[0,t]$
         opisana jest przez zmienną $X$ o rozkładzie Poissona z patametrem
         $\lambda$. Mówimy wtedy, że $T$ ma rozkład wykładniczy z parametrem
         $\lambda$
@@ -754,8 +754,8 @@
         \[
             f(t)=
             \begin{cases}
-                0 & ,t \leq 0 \\
-                \lambda e^{-\lambda t} & ,t>0.
+                0 & ,t<0 \\
+                \lambda e^{-\lambda t} & ,t \geq 0.
             \end{cases}
         \]
         Wówczas
@@ -765,11 +765,69 @@
         \[
             \sigma^2=\frac{1}{\lambda^2}
         \]
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\linewidth]{wykladniczy.png}
+            \caption{Funkcja gęstości w rozkładzie wykładniczym.}
+        \end{figure}
     \end{definition}
+    \begin{definition}[Rozkład gamma]
+        Mówimy, że zmienna losowa $X$ ma rozkład gamma z parametrami
+        $s>0$ i $r>0$
+        \[
+            X \sim Gamma(s,r)
+        \]
+        jeśli jej gęstość wyraża się wzorem
+        \[
+            f(x)=
+            \begin{cases}
+                0 & ,x<0 \\
+                \frac{r^s}{\Gamma(s)}x^{s-1}e^{-rx} & ,x \geq 0
+            \end{cases}
+        \]
+        gdzie $\Gamma:(0,\infty) \rightarrow (0,\infty)$ jest tzw.
+        funkcją Eulera
+        \[
+            \Gamma(s)=\int_{0}^{\infty}x^{s-1}e^{-x}dx.
+        \]
+        Jest rozkładem ogólniejszym niż rozkład wykładniczy,
+        w szczególności
+        \[
+            Gamma(1,r)=Exp(r).
+        \]
+        Własności funkcji Eulera:
+        \begin{enumerate}
+            \item $\Gamma(s+1)=s\Gamma(s)$
+            \item Jeśli $n\in \mathbb{N}$, to $\Gamma(n+1)=n!$
+            \item $\Gamma\left(\frac{1}{2}\right)=\sqrt{\pi}$
+            \item $\int_{0}^{\infty}x^{s-1}e^{-rx}dx=\frac{\Gamma(s)}{r^s}$
+        \end{enumerate}
+        Wielkości opisujące rozkład gamma:
+        \[
+            \mu=\frac{s}{r}
+        \]
+        \[
+            \sigma^2=\frac{s}{r^2}
+        \]
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\linewidth]{gamma_r.png}
+            \caption{Funkcja gęstości w rozkładzie gamma dla ustalonego $r$.}
+        \end{figure}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\linewidth]{gamma_s.png}
+            \caption{Funkcja gęstości w rozkładzie gamma dla ustalonego $s$.}
+        \end{figure}
+    \end{definition}
+
+    \section{Wnioskowanie statystyczne}
+    \subsection{Podstawy wnioskowania statystycznego}
+    \subsection{Statystyki}
 
     \section{Literatura}
     \begin{thebibliography}{9}
-        \bibitem{Smołka} Smołka, M. (2025). Rachunek prawdopodobieństwa
+        \bibitem{Smołka} Smołka, M. (2026). Rachunek prawdopodobieństwa
         i statystyka. \textit{Wykłady prowadzone na Akademii
         Górniczo-Hutniczej w Krakowie}.
     \end{thebibliography}
