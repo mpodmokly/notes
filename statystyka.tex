@@ -626,8 +626,7 @@
         \]
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.8\linewidth]
-                {dwumianowy.png}
+            \includegraphics[width=0.8\linewidth]{dwumianowy.png}
             \caption{Funkcja prawdopodobieństwa w rozkładzie dwumianowym.}
         \end{figure}
     \end{definition}
@@ -658,13 +657,12 @@
         \]
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.8\linewidth]
-                {geometryczny.png}
+            \includegraphics[width=0.8\linewidth]{geometryczny.png}
             \caption{Funkcja prawdopodobieństwa w rozkładzie geometrycznym.}
         \end{figure}
     \end{definition}
     \begin{definition}[Rozkład Poissona]
-        Jeśli zmienna $N$ o wartościach w $N$ opisuje liczbę wystąpień
+        Jeśli zmienna $N$ o wartościach w $\mathbb{N}$ opisuje liczbę wystąpień
         pewnego powtarzalnego zdarzenia w przedziale czasowym $[0,t]$, przy
         czym spełnione są założenia:
         \begin{itemize}
@@ -673,7 +671,7 @@
                 wystąpień w jednostce czasu jest stała,
             \item w danej chwili może zajść co najwyżej jedno powtórzenie,
         \end{itemize}
-        to zmienna ma rozkład Poissona z parametrem $\lambda=rt$
+        to zmienna ma rozkład Poissona z parametrem $\lambda=rt>0$
         \[
             N \sim Pois(\lambda).
         \]
@@ -696,8 +694,7 @@
         \]
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.8\linewidth]
-                {poissona.png}
+            \includegraphics[width=0.8\linewidth]{poissona.png}
             \caption{Funkcja prawdopodobieństwa w rozkładzie Poissona.}
         \end{figure}
     \end{definition}
@@ -715,6 +712,60 @@
             \lim_{n \to \infty} P(X_n=k)=\frac{e^{-\lambda}\lambda^k}{k!}.
         \]
     \end{theorem}
+    
+    \subsection{Rozkłady ciągłe}
+    \begin{definition}[Rozkład jednostajny]
+        Mówimy, że zmienna losowa $X$ ma rozkład jednostajny na przedziale
+        $[a,b]$ jeśli jej gęstość wyraża się wzorem
+        \[
+            f(x)=
+            \begin{cases}
+                \frac{1}{b-a} & ,x\in[a,b] \\
+                0 & ,x \notin [a,b]
+            \end{cases}
+        \]
+        zapisujemy
+        \[
+            X \sim \mathcal{U}(a,b).
+        \]
+        Wówczas
+        \[
+            \mu=\frac{a+b}{2}
+        \]
+        \[
+            \sigma^2=\frac{(b-a)^2}{12}
+        \]
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\linewidth]{jednostajny.png}
+            \caption{Funkcja prawdopodobieństwa w rozkładzie jednostajnym.}
+        \end{figure}
+    \end{definition}
+    \begin{definition}[Rozkład wykładniczy]
+        Niech $T$ będzie zmienną modelującą czas oczekiwania na pierwsze
+        zdarzenie w ciągu zdarzeń takim, że ich liczba w przedziale $[0,5]$
+        opisana jest przez zmienną $X$ o rozkładzie Poissona z patametrem
+        $\lambda$. Mówimy wtedy, że $T$ ma rozkład wykładniczy z parametrem
+        $\lambda$
+        \[
+            T \sim Exp(\lambda)
+        \]
+        Gęstość ma postać
+        \[
+            f(t)=
+            \begin{cases}
+                0 & ,t \leq 0 \\
+                \lambda e^{-\lambda t} & ,t>0.
+            \end{cases}
+        \]
+        Wówczas
+        \[
+            \mu=\frac{1}{\lambda}
+        \]
+        \[
+            \sigma^2=\frac{1}{\lambda^2}
+        \]
+    \end{definition}
 
     \section{Literatura}
     \begin{thebibliography}{9}
