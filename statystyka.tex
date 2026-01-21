@@ -820,10 +820,83 @@
             \caption{Funkcja gęstości w rozkładzie gamma dla ustalonego $s$.}
         \end{figure}
     \end{definition}
+    \begin{definition}[Rozkład $\chi^2$]
+        TODO
+    \end{definition}
+
+    \section{Zmienne losowe wielowymiarowe}
+    TODO
 
     \section{Wnioskowanie statystyczne}
     \subsection{Podstawy wnioskowania statystycznego}
+    \begin{definition}[Model statystyczny]
+        Modelem statystycznym nazywamy parę
+        \[
+            (\mathcal{X},\mathcal{P})
+        \]
+        gdzie $\mathcal{P}$ jest rodziną rozkładów prawdopodobieństwa na
+        zbiorze $\mathcal{X}$. Zazwyczaj przyjmuje się, że
+        \[
+            \mathcal{P}=\{P_\theta :\theta \in \Theta\}
+        \]
+        dla pewnego zbioru $\Theta$ dopuszczalnych wartości parametrów
+        modelu $\theta$.
+    \end{definition}
+    \begin{definition}[Prosta próba losowa]
+        Prostą próbą losową o liczności $n$ z rozkładu $P_\theta$ nazywamy
+        ciąg niezależnych zmiennych losowych $X_1,X_2,\ldots,X_n$ takich, że
+        \[
+            X_i \sim P_\theta
+        \]
+        dla każdego $i=1,2,\ldots,n$. Jeśli $X_1,X_2,\ldots,X_n$ jest prostą
+        próbą losową, to ciąg wartości $x_1,x_2,\ldots,x_n\in \mathbb{R}$
+        takich, że
+        \[
+            X_1(\omega)=x_1,X_2(\omega)=x_2,\ldots,X_n(\omega)=x_n
+        \]
+        dla pewnego $\omega$ nazywamy \textbf{realizacją prostej próby
+        losowej} $X_1,X_2,\ldots,X_n$.
+    \end{definition}
+
     \subsection{Statystyki}
+    \begin{definition}[Statystyka]
+        Statystyką nazywa się zmienną losową będącą funkcją prostej próby
+        losowej
+        \[
+            T(X_1,X_2,\ldots,X_n).
+        \]
+        Funkcja $T$ używana do konstrukcji statystyki musi przyjmować
+        listę argumentów dowolnej długości.
+    \end{definition}
+    \begin{definition}[Średnia w prostej próbie losowej]
+        Jest to statystyka dana wzorem
+        \[
+            \bar{X}=\bar{X_n}-\frac{X_1+X_2+\ldots+X_n}{n}.
+        \]
+        Jeśli
+        \[
+            X_i \sim \mathcal{N}(\mu,\sigma)
+        \]
+        to korzystając z własności rozkładu normalnego otrzymujemy
+        \[
+            \bar{X} \sim \mathcal{N}\left(\mu,\frac{\sigma}{\sqrt{n}}\right).
+        \]
+    \end{definition}
+    \begin{definition}[Wariancja w prostej próbie losowej]
+        Jest to statystyka dana wzorem
+        \[
+            S^2=\frac{1}{n-1}\sum_{i=1}^{n}\left(X_i-\bar{X}\right)^2.
+        \]
+    \end{definition}
+
+    \subsection{Estymatory}
+    TODO
+
+    \subsection{Przedziały ufności}
+    TODO
+
+    \subsection{Testowanie hipotez}
+    TODO
 
     \section{Literatura}
     \begin{thebibliography}{9}
