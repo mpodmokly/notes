@@ -888,6 +888,14 @@
             S^2=\frac{1}{n-1}\sum_{i=1}^{n}\left(X_i-\bar{X}\right)^2.
         \]
     \end{definition}
+    \begin{theorem}[Centralne Twierdzenie Graniczne]
+        \[
+            \sum_{i=1}^{n} X_i \approx \mathcal{N}(n\mu,\sigma\sqrt{n})
+        \]
+        \[
+            \bar{X} \approx \mathcal{N}(\mu,\frac{\sigma}{\sqrt{n}})
+        \]
+    \end{theorem}
 
     \subsection{Estymatory}
     TODO
@@ -896,7 +904,90 @@
     TODO
 
     \subsection{Testowanie hipotez}
-    TODO
+    \begin{definition}[Hipoteza statystyczna]
+        Rozważamy model statystyczny
+        $\mathcal{P}=\{P_\theta :\theta\in\Theta\}$. Hipotezą
+        statystyczną nazywamy dowolny niepusty podzbiór $\mathcal{P}$.
+        W praktyce wyróżniamy jedną hipotezę zwaną \textbf{hipotezą zerową}
+        ($H_0$), która podlega weryfikacji, natomiast
+        $H_1=\mathcal{P}\setminus H_0$ nazywamy \textbf{hipotezą
+        alternatywną}.
+    \end{definition}
+    \begin{definition}[Zbiór krytyczny testu]
+        Statystykę $U$ 
+    \end{definition}
+    \begin{definition}[p-wartość]
+        p-wartość to, dla zaobserwowanej wartości statystyki testowej,
+        najmniejszy poziom istotności, przy którym ta wartość prowadzi do
+        odrzucenia hipotezy zerowej. Inaczej, dla poziomu istotności
+        $\alpha$ oraz p-wartości $p$, jeżeli
+        \[
+            p>\alpha \Rightarrow \text{brak podstaw do odrzucenia }H_0
+        \]
+        \[
+            p\leq\alpha \Rightarrow \text{odrzucamy }H_0
+        \]
+    \end{definition}
+    \begin{theorem}[Test dla wartości oczekiwanej przy znanej wariancji]
+        Mamy $\mathcal{P}=\{\mathcal{N}(\mu,\sigma):\mu\in\mathbb{R}\}$ dla
+        ustalonego $\sigma>0$. Ustalamy hipotezy
+        \[
+            H_0:\mu=\mu_0
+        \]
+        \[
+            H_1:\mu\neq\mu_0.
+        \]
+        Jako statystykę testową bierzemy
+        \[
+            Z=\frac{\bar{X}-\mu_0}{\frac{\sigma}{\sqrt{n}}}
+        \]
+        oraz przyjmujemy zbiór krytyczny na poziomie istotności $\alpha$
+        \[
+            C=\left(-\infty,-z_{1-\frac{\alpha}{2}}\right] \cup
+            \left[z_{1-\frac{\alpha}{2}},\infty\right)
+        \]
+        p-wartość dla dwustronnej hipotezy alternatywnej wynosi
+        \[
+            p(z)=2(1-\Phi(|z|))
+        \]
+        gdzie $\Phi$ jest dystrybuantą rozkładu normalnego.
+    \end{theorem}
+    \begin{theorem}[Test dla wartości oczekiwanej przy nieznanej wariancji]
+        Jako statystykę testową bierzemy
+        \[
+            T=\frac{\bar{X}-\mu_0}{\frac{S}{\sqrt{n}}}
+        \]
+        oraz przyjmujemy zbiór krytyczny na poziomie istotności $\alpha$ dla
+        dwustronnej hipotezy alternatywnej
+        \[
+            C=\left(-\infty,-t_{1-\frac{\alpha}{2},n-1}\right] \cup
+            \left[t_{1-\frac{\alpha}{2},n-1},\infty\right)
+        \]
+        p-wartość wynosi
+        \[
+            p(t)=2(1-F_{n-1}(|t|))
+        \]
+        gdzie $F_{n-1}$ jest dystrybuantą rozkładu $t_{n-1}$.
+    \end{theorem}
+    \begin{theorem}[Test dla wartości oczekiwanej z dwóch prób]
+        Dla nieznanych, ale równych wariancji używamy statystyki
+        \[
+            T=\frac{(\bar{X}-\bar{Y})-(\mu_1-\mu_2)}
+                {S_p\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}
+        \]
+        jeżeli wariancje są znane to
+        \[
+            T=\frac{(\bar{X}-\bar{Y})-(\mu_1-\mu_2)}
+                {\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_1^2}{n_2}}}
+        \]
+        Dla dwustronnej hipotezy alternatywnej
+        \[
+            \mu_1\neq\mu_2
+        \]
+    \end{theorem}
+    \begin{theorem}[Test równości wariancji]
+        
+    \end{theorem}
 
     \section{Literatura}
     \begin{thebibliography}{9}
