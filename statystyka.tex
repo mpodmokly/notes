@@ -823,6 +823,9 @@
     \begin{definition}[Rozkład $\chi^2$]
         TODO
     \end{definition}
+    \begin{definition}[Rozkład normalny]
+        TODO
+    \end{definition}
 
     \section{Zmienne losowe wielowymiarowe}
     TODO
@@ -889,16 +892,100 @@
         \]
     \end{definition}
     \begin{theorem}[Centralne Twierdzenie Graniczne]
-        \[
-            \sum_{i=1}^{n} X_i \approx \mathcal{N}(n\mu,\sigma\sqrt{n})
-        \]
+        Niech $X_n$ będzie ciągiem niezależnych zmiennych losowych o tym
+        samym rozkładzie ze skończoną średnią $\mu$ i skończoną, dodatnią
+        wariancją $\sigma^2$. Wtedy dla dużych $n$ rozkład $\bar{X}$ jest
+        w przybliżeniu równy rozkładowi normalnemu
         \[
             \bar{X} \approx \mathcal{N}(\mu,\frac{\sigma}{\sqrt{n}})
+        \]
+        Natomiast dla sumy takich zmiennych losowych mamy
+        \[
+            \sum_{i=1}^{n} X_i \approx \mathcal{N}(n\mu,\sigma\sqrt{n})
         \]
     \end{theorem}
 
     \subsection{Estymatory}
-    TODO
+    \begin{definition}[Estymator punktowy]
+        Niech $\theta$ będzie parametrem lub innym wskaźnikiem liczbowym
+        pewnego rozkładu prawdopodobieństwa. Estymatorem $\theta$ nazywa
+        się statystykę
+        \[
+            \hat{\theta}(X_1,X_2,\ldots,X_n)
+        \]
+        służącą do wyznaczenia przybliżonej wartości $\theta$. Jeśli
+        $x_1,x_2,\ldots,x_n$ jest realizacją prostej próby losowej
+        $X_1,X_2,\ldots,X_n$, to liczbę
+        \[
+            \hat{\theta}(x_1,x_2,\ldots,x_n)
+        \]
+        nazywa się \textbf{wartością estymatora} albo
+        \textbf{estymatą}.
+    \end{definition}
+    \begin{definition}[Funkcja wiarygodności]
+        Niech $X_1,X_2,\ldots,X_n$ będzie prostą próbą losową,
+        a $x_1,x_2,\ldots,x_n$ jej realizacją. Funkcją wiarygodności dla
+        modelu statystycznego $\mathcal{P}=\{P_\theta :\theta \in \Theta\}$,
+        jeśli $P_\theta$ jest rozkładem ciągłym o gęstości $f_\theta$,
+        nazywamy funkcję
+        \[
+            \mathcal{L}(\theta |x_1,x_2,\ldots,x_n)=f_\theta(x_1) \cdot
+            f_\theta(x_2) \cdot \ldots \cdot f_\theta(x_n)
+        \]
+        natomiast jeśli $P_\theta$ jest rozkładem dyskretnym z funkcją
+        prawdopodobieństwa $p_\theta$, to
+        \[
+            \mathcal{L}(\theta |x_1,x_2,\ldots,x_n)=p_\theta(x_1) \cdot
+            p_\theta(x_2) \cdot \ldots \cdot p_\theta(x_n).
+        \]
+        Ze względów obliczeniowych często rozważa się logarytmiczną
+        funkcję wiarygodności
+        \[
+            l(\theta |x_1,x_2,\ldots,x_n)=\ln\mathcal{L}
+            (\theta |x_1,x_2,\ldots,x_n)
+        \]
+        dla rozkładów ciągłych mamy
+        \[
+            l(\theta |x_1,x_2,\ldots,x_n)=\ln f_\theta(x_1)+\ln
+            f_\theta(x_2)+\ldots+\ln f_\theta(x_n)
+        \]
+        a dla rozkładów dyskretnych
+        \[
+            l(\theta |x_1,x_2,\ldots,x_n)=\ln p_\theta(x_1)+\ln
+            p_\theta(x_2)+\ldots+\ln p_\theta(x_n)
+        \]
+    \end{definition}
+    \begin{definition}[Estymator największej wiarygodności (MLE)]
+        Estymatorem największej wiarygodności nazywamy funkcję
+        $\hat{\theta}$, która przy ustalonych danych
+        $x=(x_1,x_2,\ldots,x_n)$ maksymalizuje wartość funkcji
+        wiarygodności, albo wartość logarytmicznej funkcji
+        wiarygodności. Jeśli funkcja wiarygodności jest różniczkowalna
+        względem
+        \[
+            \theta=(\theta_1,\theta_2,\ldots,\theta_k)
+        \]
+        dla dowolnego $x=(x_1,x_2,\ldots,x_n)$, to MLE można czasem
+        wyznaczyć analitycznie obliczając pochodne względem parametrów
+        rozkładu i rozwiązując układ równań
+        \[
+            \begin{cases}
+                \frac{\partial}{\partial\theta_1}\mathcal{L}(\theta|x)=0\\
+                \frac{\partial}{\partial\theta_2}\mathcal{L}(\theta|x)=0\\
+                \vdots \\
+                \frac{\partial}{\partial\theta_k}\mathcal{L}(\theta|x)=0
+            \end{cases}
+        \]
+        albo
+        \[
+            \begin{cases}
+                \frac{\partial}{\partial\theta_1}l(\theta|x)=0 \\
+                \frac{\partial}{\partial\theta_2}l(\theta|x)=0 \\
+                \vdots \\
+                \frac{\partial}{\partial\theta_k}l(\theta|x)=0
+            \end{cases}
+        \]
+    \end{definition}
 
     \subsection{Przedziały ufności}
     TODO
