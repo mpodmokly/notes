@@ -821,10 +821,68 @@
         \end{figure}
     \end{definition}
     \begin{definition}[Rozkład $\chi^2$]
-        TODO
+        Szczególnym przypadkiem rozkładu gamma dla $s=\frac{n}{2}$
+        i $r=\frac{1}{2}$ jest rozkład $\chi^2$ o $n$ stopniach swobody
+        \[
+            \chi^2(n)=Gamma\left(\frac{n}{2},\frac{1}{2}\right)
+        \]
+        zatem gęstość tego rozkładu wyraża się wzorem
+        \[
+            f(x)=
+            \begin{cases}
+                0 & ,x<0 \\
+                \frac{1}{(\sqrt{2})^n\Gamma\left(\frac{n}{2}\right)}
+                x^{\frac{n}{2}-1}e^{-\frac{x}{2}} & ,x\geq 0
+            \end{cases}
+        \]
+        Wielkości opisujące rozkład $\chi^2$:
+        \[
+            \mu=n
+        \]
+        \[
+            \sigma^2=2n
+        \]
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\linewidth]{chi2.png}
+            \caption{Funkcja gęstości w rozkładzie $\chi^2$.}
+        \end{figure}
     \end{definition}
     \begin{definition}[Rozkład normalny]
-        TODO
+        Mówimy, że zmienna losowa $X$ o gęstości $\phi_{\mu,\sigma}$ ma
+        rozkład normalny z parametrami $\mu\in\mathbb{R}$ i $\sigma>0$
+        \[
+            X \sim \mathcal{N}(\mu,\sigma)
+        \]
+        jeśli
+        \[
+            \phi_{\mu,\sigma}(x)=\frac{1}{\sigma\sqrt{2\pi}}
+            e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+        \]
+        Wielkości opisujące rozkład normalny:
+        \[
+            \mathbb{E}(X)=\mu
+        \]
+        \[
+            Var(X)=\sigma^2
+        \]
+        Rozkład $\mathcal{N}(0,1)$ nazywamy standardowym rozkładem
+        normalnym. Jeśli $X \sim \mathcal{N}(\mu,\sigma)$, to
+        \[
+            X=\frac{X-\mu}{\sigma} \sim \mathcal{N}(0,1)
+        \]
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\linewidth]{normalny_mu.png}
+            \caption{Funkcja gęstości w rozkładzie normalnym
+                dla ustalonego $\mu$.}
+        \end{figure}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\linewidth]{normalny_sigma.png}
+            \caption{Funkcja gęstości w rozkładzie normalnym
+                dla ustalonego $\sigma$.}
+        \end{figure}
     \end{definition}
 
     \section{Zmienne losowe wielowymiarowe}
@@ -1001,19 +1059,17 @@
         alternatywną}.
     \end{definition}
     \begin{definition}[Zbiór krytyczny testu]
-        Statystykę $U$ 
+        Statystykę $U$ TODO
     \end{definition}
     \begin{definition}[p-wartość]
         p-wartość to, dla zaobserwowanej wartości statystyki testowej,
         najmniejszy poziom istotności, przy którym ta wartość prowadzi do
         odrzucenia hipotezy zerowej. Inaczej, dla poziomu istotności
         $\alpha$ oraz p-wartości $p$, jeżeli
-        \[
-            p>\alpha \Rightarrow \text{brak podstaw do odrzucenia }H_0
-        \]
-        \[
-            p\leq\alpha \Rightarrow \text{odrzucamy }H_0
-        \]
+        \begin{align*}
+            & p>\alpha \Rightarrow \text{brak podstaw do odrzucenia }H_0 \\
+            & p\leq\alpha \Rightarrow \text{odrzucamy }H_0
+        \end{align*}
     \end{definition}
     \begin{theorem}[Test dla wartości oczekiwanej przy znanej wariancji]
         Mamy $\mathcal{P}=\{\mathcal{N}(\mu,\sigma):\mu\in\mathbb{R}\}$ dla

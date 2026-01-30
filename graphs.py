@@ -1,30 +1,24 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.stats import gamma
+from scipy.stats import norm
 
 
-x = np.linspace(0, 10, 1000)
+x = np.linspace(-3, 5, 1000)
+sigma = 1
 
-shape = 5
+mu = 0
+y = norm.pdf(x, loc=mu, scale=sigma)
+plt.plot(x, y, c="C0", label=r"$\mu=0,\sigma=1$")
 
-rate = 1
-y = gamma.pdf(x, a=shape, scale=1/rate)
-plt.plot(x, y, label=r"$s=5,r=1$")
+mu = 1
+y = norm.pdf(x, loc=mu, scale=sigma)
+plt.plot(x, y, c="red", label=r"$\mu=1,\sigma=1$")
 
-rate = 1.25
-y = gamma.pdf(x, a=shape, scale=1/rate)
-plt.plot(x, y, c="red", label=r"$s=5,r=1.25$")
-
-rate = 2
-y = gamma.pdf(x, a=shape, scale=1/rate)
-plt.plot(x, y, c="green", label=r"$s=5,r=2$")
-
-rate = 4
-y = gamma.pdf(x, a=shape, scale=1/rate)
-plt.plot(x, y, c="lightblue", label=r"$s=5,r=4$")
+mu = 2
+y = norm.pdf(x, loc=mu, scale=sigma)
+plt.plot(x, y, c="green", label=r"$\mu=2,\sigma=1$")
 
 plt.legend()
-
 plt.xlabel(r"$X$")
 plt.ylabel(r"$f(x)$")
 plt.title("Funkcja gęstości")
