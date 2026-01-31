@@ -927,9 +927,56 @@
                 dla ustalonego $\sigma$.}
         \end{figure}
     \end{definition}
+    \begin{definition}[Rozkład t-Studenta]
+        Rozkład t-Studenta o $\nu$ stopniach swobody dla $\nu>0$, to
+        rozkład ciągły o gęstości
+        \[
+            f(x)=\frac{\Gamma\left(\frac{\nu+1}{2}\right)}
+            {\Gamma\left(\frac{\nu}{2}\right)\sqrt{\pi\nu}}
+            \left(1+\frac{x^2}{\nu}\right)^{-\frac{\nu+1}{2}}
+        \]
+        Jeśli zmienne losowe $Z$ i $V$ są niezależne, a ponadto
+        \[
+            Z \sim \mathcal{N}(0,1)
+        \]
+        oraz
+        \[
+            V \sim \chi^2(\nu)
+        \]
+        to
+        \[
+            \frac{Z}{\sqrt{\frac{V}{\nu}}}=Z\sqrt{\frac{\nu}{V}}
+            \sim t_\nu
+        \]
+        Wielkości opisujące rozkład t-Studenta
+        \[
+            \mu=
+            \begin{cases}
+                0 & ,\nu>1 \\
+                \text{nie istnieje} & ,\nu\leq 1
+            \end{cases}
+        \]
+        \[
+            \sigma^2=
+            \begin{cases}
+                \frac{\nu}{\nu-2} & ,\nu>2 \\
+                \infty & ,1<\nu\leq 2 \\
+                \text{nie istnieje} & ,\nu\leq 1
+            \end{cases}
+        \]
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\linewidth]{t-studenta.png}
+            \caption{Funkcja gęstości w rozkładzie t-Studenta.}
+        \end{figure}
+    \end{definition}
+    \begin{definition}[Rozkład F]
+        TODO
+    \end{definition}
 
     \section{Zmienne losowe wielowymiarowe}
-    Zmienna $(X,Y)$ o gęstości $f_{X,Y}(x,y)$ ma rozkłady brzegowe
+    Zmienna losowa $(X,Y)$ dwuwymiarowa o gęstości $f_{X,Y}(x,y)$ ma
+    rozkłady brzegowe
     \[
         f_X(x)=\int_{-\infty}^{\infty}f_{X,Y}(x,y)dy
     \]
@@ -1122,11 +1169,124 @@
         \]
     \end{definition}
     \begin{definition}[Estymator metody momentów]
-        
+        TODO
     \end{definition}
 
     \subsection{Przedziały ufności}
-    TODO
+    \begin{definition}[Przedział ufności]
+        Załóżmy, że rozkłady $P_\theta$ są ciągłe. Niech $\underbar{U}$
+        i $\bar{U}$ będą statystykami takimi, że
+        \[
+            P(\underbar{U}\leq\bar{U})=1
+        \]
+        ustalmy $\alpha\in(0,1)$. Przedziałem ufności dla parametru $\theta$
+        na \textbf{poziomie ufności} $1-\alpha$ nazywamy przedział losowy
+        $[\underbar{U},\bar{U}]$ o ile spełniona jest równość
+        \[
+            P(\underbar{U}\leq\theta\leq\bar{U})=1-\alpha
+        \]
+        Jeśli rozkłady $P_\theta$ są dyskretne, to
+        \[
+            P(\underbar{U}\leq\theta\leq\bar{U})\geq 1-\alpha
+        \]
+    \end{definition}
+    \begin{definition}[Przedział ufności dla $\mu$ przy znanym $\sigma$]
+        Niech $\mathcal{P}=\{\mathcal{N}(\mu,\sigma):\mu\in\mathbb{R}\}$ dla
+        pewnego znanego $\sigma>0$. Szukamy przedziału ufności dla $\mu$.
+        Przedziałem ufności na poziomie $1-\alpha$ dla $\mu$ jest
+        \[
+            \left[\bar{X}-z_{1-\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}},
+            \bar{X}+z_{1-\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}\right]
+        \]
+        gdzie $z_p$ jest kwantylem rzędu $p$ rozkładu $\mathcal{N}(0,1)$.
+    \end{definition}
+    \begin{definition}[Przedział ufności dla $\mu$ przy nieznanym $\sigma$]
+        Tym razem $\mathcal{P}=\{\mathcal{N}(\mu,\sigma):\mu\in\mathbb{R},
+        \sigma>0\}$. Przedziałem ufności na poziomie $1-\alpha$ dla $\mu$
+        jest
+        \[
+            \left[\bar{X}-t_{1-\frac{\alpha}{2},n-1}\frac{S}{\sqrt{n}},
+            \bar{X}+t_{1-\frac{\alpha}{2},n-1}\frac{S}{\sqrt{n}}\right]
+        \]
+        gdzie $t_{p,\nu}$ jest kwantylem rzędu $p$ rozkładu $t_\nu$.
+    \end{definition}
+    \begin{definition}[Porównanie wartości oczekiwanych - znane wariancje]
+        Rozważamy sytuację, w której dysponujemy dwoma próbami losowymi
+        z rozkładu normalnego
+        \[
+            X_1,X_2,\ldots,X_{n_1} \quad\text{i}\quad Y_1,Y_2,\ldots,Y_{n_2}
+        \]
+        o nieznanych wartościach oczekiwanych $\mu_1$ i $\mu_2$ oraz
+        znanych wariancjach $\sigma_1^2$ i $\sigma_2^2$
+        \[
+            X_i \sim \mathcal{N}(\mu_1,\sigma_1)
+        \]
+        \[
+            Y_i \sim \mathcal{N}(\mu_2,\sigma_2)
+        \]
+        Typowe badanie dotyczy porównania wartości oczekiwanych w obu próbach,
+        co jest rozumiane jako analiza wartości różnicy
+        \[
+            \mu_1-\mu_2
+        \]
+        Przedziałem ufności dla $\mu_1-\mu_2$ na poziomie $1-\alpha$ jest
+        \[
+            \left[\bar{X}-\bar{Y}-z_{1-\frac{\alpha}{2}}
+            \sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}},
+            \bar{X}-\bar{Y}+z_{1-\frac{\alpha}{2}}
+            \sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}\right]
+        \]
+    \end{definition}
+    \begin{definition}[Porównanie wartości oczekiwanych - nieznane, ale
+        równe wariancje]
+        Zakładamy, że
+        \[
+            \sigma_1=\sigma_2=\sigma
+        \]
+        ale $\sigma$ jest nieznane. Wtedy przedział ufności dla $\mu_1-\mu_2$
+        na poziomie $1-\alpha$ jest równy
+        \[
+            \left[\bar{X}-\bar{Y}-t_{1-\frac{\alpha}{2},n_1+n_2-2}S_p
+            \sqrt{\frac{1}{n_1}+\frac{1}{n_2}},
+            \bar{X}-\bar{Y}+t_{1-\frac{\alpha}{2},n_1+n_2-2}S_p
+            \sqrt{\frac{1}{n_1}+\frac{1}{n_2}}
+            \right]
+        \]
+        gdzie
+        \[
+            S_p^2=\frac{(n_1-1)S_X^2+(n_2-1)S_Y^2}{n_1+n_2-2}
+        \]
+    \end{definition}
+    \begin{definition}[Porównanie wartości oczekiwanych - obserwacje
+        sparowane]
+        Zakładamy, że
+        \[
+            n_1=n_2=n
+        \]
+        oraz
+        \[
+            (X_i,Y_i) \sim \mathcal{N}((\mu_1,\mu_2),\Sigma)
+        \]
+        przy czym zmienne dwuwymiarowe $(X_1,Y_1),(X_2,Y_2),\ldots,(X_n,Y_n)$
+        są wzajemnie niezależne. W takiej sytuacji zmienne jednowymiarowe
+        \[
+            D_i=X_i-Y_i \sim \mathcal{N}(\mu_1-\mu_2,\sigma_D)
+        \]
+        są niezależne. Wtedy przedział ufności dla $\mu_1-\mu_2$ na poziomie
+        $1-\alpha$ jest równy
+        \[
+            \left[\bar{X}-\bar{Y}-t_{1-\frac{\alpha}{2},n-1}
+            \frac{S_D}{\sqrt{n}},
+            \bar{X}-\bar{Y}+t_{1-\frac{\alpha}{2},n-1}
+            \frac{S_D}{\sqrt{n}}
+            \right]
+        \]
+        gdzie
+        \[
+            S_D=\frac{1}{n-1}\sum_{i=1}^{n}
+            \left(X_i-Y_i-\bar{X}+\bar{Y}\right)^2
+        \]
+    \end{definition}
 
     \subsection{Testowanie hipotez}
     \begin{definition}[Hipoteza statystyczna]
