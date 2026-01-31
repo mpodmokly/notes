@@ -326,7 +326,7 @@
         dyskretnym z funkcją prawdopodobieństwa $p$ nazywamy liczbę określoną
         wzorem
         \[
-            \mu=\mathbb{E}(X)=\sum_{k:x_k \in \mathcal{S}}
+            \mu=\mathbb{E}(X)=\sum_{x_k \in \mathcal{S}}
             x_k \cdot p(x_k)
         \]
         Jeśli $X$ jest zmienną o rozkładzie ciągłym z gęstością $f$, to
@@ -339,6 +339,14 @@
     \begin{enumerate}
         \item $\mathbb{E}c=c$
         \item $\mathbb{E}(aX+bY+c)=a\mathbb{E}X+b\mathbb{E}Y+c$
+        \item Dla rozkładów ciągłych
+            \[
+                \mathbb{E}(g(X))=\int_{-\infty}^{\infty}g(x)f(x)dx
+            \]
+            dla rozkładów dyskretnych
+            \[
+                \mathbb{E}(g(X))=\sum_{x_k\in\mathcal{S}}g(x_k)f(x_k)dx
+            \]
     \end{enumerate}
     \begin{definition}[Moment zwykły]
         Momentem zwykłym rzędu $k$ zmiennej losowej $X$ dla
@@ -484,6 +492,41 @@
         rozkład ciągły to modą jest dowolne maksimum lokalne gęstości tego
         rozkładu.
     \end{definition}
+
+    \subsection{Funkcje zmiennych losowych}
+    \begin{theorem}[Metoda transformacji]
+        Jeśli $Y=g(X)$ oraz $g$ jest fukcją ściśle monotoniczną, to istnieje
+        funkcja odwrotna
+        \[
+            h=g^{-1}
+        \]
+        jeśli funkcja $h$ jest różniczkowalna, to gęstość rozkładu $Y$ spełnia
+        następującą równość
+        \[
+            f_Y(y)=f_X(h(y)) \cdot |h'(y)|
+        \]
+    \end{theorem}
+    \noindent
+    Ważne szczególne przypadki dla rozkładów jednowymiarowych. Załóżmy, że
+    $c\neq 0$ i $d\in\mathbb{R}$:
+    \begin{enumerate}
+        \item Jeśli $X \sim \mathcal{N}(\mu,\sigma)$ i $Y=cX+d$, to
+            \[
+                Y \sim \mathcal{N}(c\mu +d,|c|\sigma)
+            \]
+        \item Jeśli $X \sim \mathcal{U}(a,b)$ i $Y=cX+d$, to
+            \[
+                Y \sim
+                \begin{cases}
+                    \mathcal{U}(ca+d,cb+d) & ,c>0 \\
+                    \mathcal{U}(cb+d,ca+d) & ,c<0
+                \end{cases}
+            \]
+        \item Jeśli $X \sim Gamma(s,r)$ i $Y=cX$ dla $c>0$, to
+            \[
+                Y \sim Gamma\left(s, \frac{r}{c}\right)
+            \]
+    \end{enumerate}
     
     \section{Wybrane rozkłady prawdopodobieństwa}
     \subsection{Rozkłady dyskretne}
@@ -886,7 +929,41 @@
     \end{definition}
 
     \section{Zmienne losowe wielowymiarowe}
-    TODO
+    Zmienna $(X,Y)$ o gęstości $f_{X,Y}(x,y)$ ma rozkłady brzegowe
+    \[
+        f_X(x)=\int_{-\infty}^{\infty}f_{X,Y}(x,y)dy
+    \]
+    \[
+        f_Y(y)=\int_{-\infty}^{\infty}f_{X,Y}(x,y)dx
+    \]
+    rozkłady warunkowe
+    \[
+        f_{X|Y}(x|y)=\frac{f_{X,Y}(x,y)}{f_Y(y)}
+    \]
+    \[
+        f_{Y|X}(y|x)=\frac{f_{X,Y}(x,y)}{f_X(x)}
+    \]
+    wartość oczekiwana
+    \[
+        \mathbb{E}[XY]=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}
+        xyf_{X,Y}(x,y)dxdy
+    \]
+    \[
+        \mathbb{E}X=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}
+        xf_{X,Y}(x,y)dxdy
+    \]
+    \[
+        \mathbb{E}X=\int_{-\infty}^{\infty}xf_X(x)dx
+    \]
+    kowariancja
+    \[
+        Cov(X,Y)=\mathbb{E}[(X-\mathbb{E}X)(Y-\mathbb{E}Y)]=
+        \mathbb{E}[XY]-\mathbb{E}X\mathbb{E}Y
+    \]
+    współczynnik korelacji
+    \[
+        \rho_{X,Y}=\frac{Cov(X,Y)}{\sqrt{Var(X)Var(Y)}}
+    \]
 
     \section{Wnioskowanie statystyczne}
     \subsection{Podstawy wnioskowania statystycznego}
@@ -1043,6 +1120,9 @@
                 \frac{\partial}{\partial\theta_k}l(\theta|x)=0
             \end{cases}
         \]
+    \end{definition}
+    \begin{definition}[Estymator metody momentów]
+        
     \end{definition}
 
     \subsection{Przedziały ufności}
