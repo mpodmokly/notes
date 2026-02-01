@@ -971,12 +971,35 @@
         \end{figure}
     \end{definition}
     \begin{definition}[Rozkład F]
-        TODO
+        Jeśli $U \sim \chi^2(n_1)$ i $V \sim \chi^2(n_2)$, przy czym zmienne
+        są niezależne, to
+        \[
+            \frac{\frac{U}{n_1}}{\frac{V}{n_2}} \sim F(n_1,n_2)
+        \]
+        gdzie $F(n_1,n_2)$ jest rozkładem F o $n_1$ i $n_2$ stopniach
+        swobody. Jest to rozkład ciągły o gęstości
+        \[
+            f(x)=
+            \begin{cases}
+                \frac{\Gamma\left(\frac{n_1+n_2}{2}\right)
+                \left(\frac{n_1}{n_2}\right)^{\frac{n_1}{2}}
+                x^{\frac{n_1}{2}-1}}{\Gamma\left(\frac{n_1}{2}\right)
+                \Gamma\left(\frac{n_2}{2}\right)\left(1+\frac{n_1}{n_2}x
+                \right)^{\frac{n_1+n_2}{2}}} & ,x\geq 0 \\
+                0 & ,x<0
+            \end{cases}
+        \]
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\linewidth]{f.png}
+            \caption{Funkcja gęstości w rozkładzie F.}
+        \end{figure}
     \end{definition}
 
     \section{Zmienne losowe wielowymiarowe}
-    Zmienna losowa $(X,Y)$ dwuwymiarowa o gęstości $f_{X,Y}(x,y)$ ma
-    rozkłady brzegowe
+    \subsection{Podstawowe zależności wielowymiarowych zmiennych losowych}
+    Zmienna losowa $(X,Y)$ dwuwymiarowa o gęstości łącznej $f_{X,Y}(x,y)$
+    ma rozkłady brzegowe
     \[
         f_X(x)=\int_{-\infty}^{\infty}f_{X,Y}(x,y)dy
     \]
@@ -990,6 +1013,13 @@
     \[
         f_{Y|X}(y|x)=\frac{f_{X,Y}(x,y)}{f_X(x)}
     \]
+    prawdopodobieństwo warunkowe
+    \[
+        P(a \leq X \leq b|Y=y_0)=\int_{a}^{b}f_{X|Y}(x|y)dx
+    \]
+    \[
+        P(a \leq Y \leq b|X=x_0)=\int_{a}^{b}f_{Y|X}(y|x)dy
+    \]
     wartość oczekiwana
     \[
         \mathbb{E}[XY]=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}
@@ -1000,7 +1030,18 @@
         xf_{X,Y}(x,y)dxdy
     \]
     \[
+        \mathbb{E}Y=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}
+        yf_{X,Y}(x,y)dxdy
+    \]
+    \[
         \mathbb{E}X=\int_{-\infty}^{\infty}xf_X(x)dx
+    \]
+    \[
+        \mathbb{E}Y=\int_{-\infty}^{\infty}yf_Y(y)dy
+    \]
+    warunkowa wartość oczekiwana
+    \[
+        \mathbb{E}[X|Y]=
     \]
     kowariancja
     \[
@@ -1010,6 +1051,26 @@
     współczynnik korelacji
     \[
         \rho_{X,Y}=\frac{Cov(X,Y)}{\sqrt{Var(X)Var(Y)}}
+    \]
+
+    \subsection{Funkcje zmiennych losowych wielowymiarowych}
+    Niech zmienne losowe $X_1,X_2,\ldots,X_n$ będą niezależne. Jeśli
+    $X_i \sim \mathcal{N}(\mu_i,\sigma_i)$ dla $i\in\{1,2,\ldots,n\}$, to
+    \[
+        X_1+X_2+\cdots+X_n \sim \mathcal{N}\left(\sum_{i=1}^{n}\mu_i,
+        \sqrt{\sum_{i=1}^{n}\sigma_i^2}\right)
+    \]
+    jeśli $X_i \sim Gamma(s_i,r)$ dla $i\in\{1,2,\ldots,n\}$, to
+    \[
+        X_1+X_2+\cdots+X_n \sim Gamma\left(\sum_{i=1}^{n}s_i,r\right)
+    \]
+    jeśli $X_i \sim Pois(\lambda_i)$ dla $i\in\{1,2,\ldots,n\}$, to
+    \[
+        X_1+X_2+\cdots+X_n \sim Pois\left(\sum_{i=1}^{n}\lambda_i\right)
+    \]
+    jeśli $X_i \sim \mathcal{N}(0,1)$ dla $i\in\{1,2,\ldots,n\}$, to
+    \[
+        X_1^2+X_2^2+\cdots+X_n^2 \sim \chi^2(n)
     \]
 
     \section{Wnioskowanie statystyczne}
@@ -1287,6 +1348,34 @@
             \left(X_i-Y_i-\bar{X}+\bar{Y}\right)^2
         \]
     \end{definition}
+    \begin{definition}[Przedział ufności dla wariancji]
+        Przedział ufności dla $\sigma^2$ na poziomie $1-\alpha$
+        \[
+            \left[S^2\frac{n-1}{\chi_{1-\frac{\alpha}{2},n-1}^2},
+            S^2\frac{n-1}{\chi_{\frac{\alpha}{2},n-1}^2}\right]
+        \]
+        i dla odchylenia standardowego
+        \[
+            \left[S\sqrt{\frac{n-1}{\chi_{1-\frac{\alpha}{2},n-1}^2}},
+            S\sqrt{\frac{n-1}{\chi_{\frac{\alpha}{2},n-1}^2}}\right]
+        \]
+        gdzie $\chi_{p,\nu}^2$ jest kwantylem rzędu $p$ rozkładu
+        $\chi^2(\nu)$.
+    \end{definition}
+    \begin{definition}[Porównanie wariancji rozkładów normalnych]
+        Wariancje porównuje się analizując wartość ilorazu. Zakładamy, że
+        dane są dwie niezależne próby losowe o licznościach $n_1$ i $n_2$
+        z rozkładów $\mathcal{N}(\mu_1,\sigma_1)$ i
+        $\mathcal{N}(\mu_2,\sigma_2)$. Przedział ufności dla ilorazu
+        $\frac{\sigma_2^2}{\sigma_1^2}$ na poziomie ufności $1-\alpha$ ma
+        postać
+        \[
+            \left[\frac{S_2^2}{S_1^2}f_{\frac{\alpha}{2},n_1-1,n_2-1},
+            \frac{S_2^2}{S_1^2}f_{1-\frac{\alpha}{2},n_1-1,n_2-1}\right]
+        \]
+        gdzie $f_{p,\nu_1,\nu_2}$ jest kwantylem rzędu $p$ rozkładu
+        $F(\nu_1,\nu_2)$.
+    \end{definition}
 
     \subsection{Testowanie hipotez}
     \begin{definition}[Hipoteza statystyczna]
@@ -1299,7 +1388,18 @@
         alternatywną}.
     \end{definition}
     \begin{definition}[Zbiór krytyczny testu]
-        Statystykę $U$ TODO
+        Statystykę $U$ nazywamy testem hipotezy zerowej $H_0$ przeciwko
+        hipotezie alternatywnej $H_1$, a zbiór $C$ zbiorem krytycznym
+        testu. Weryfikacja $H_0$ polega na:
+        \begin{enumerate}
+            \item skonstruowaniu statystyki $U$ o znanym rozkładzie
+                dokładnym lub asymptotycznym
+            \item ustaleniu zbioru $C$ tych wartości $U$, których
+                wystąpienie uznaje się za wspierające odrzucenie hipotezy
+                zerowej na korzyść hipotezy alternatywnej
+            \item sprawdzeniu, czy wartość statystyki $U$ dla aktualnych
+                danych należy do $C$.
+        \end{enumerate}
     \end{definition}
     \begin{definition}[p-wartość]
         p-wartość to, dla zaobserwowanej wartości statystyki testowej,
