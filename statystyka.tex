@@ -1407,13 +1407,13 @@
         odrzucenia hipotezy zerowej. Inaczej, dla poziomu istotności
         $\alpha$ oraz p-wartości $p$, jeżeli
         \begin{align*}
-            & p>\alpha \Rightarrow \text{brak podstaw do odrzucenia }H_0 \\
-            & p\leq\alpha \Rightarrow \text{odrzucamy }H_0
+            & p<\alpha \Rightarrow \text{odrzucamy }H_0 \\
+            & p\geq\alpha \Rightarrow \text{brak podstaw do odrzucenia }H_0
         \end{align*}
     \end{definition}
     \begin{theorem}[Test dla wartości oczekiwanej przy znanej wariancji]
         Mamy $\mathcal{P}=\{\mathcal{N}(\mu,\sigma):\mu\in\mathbb{R}\}$ dla
-        ustalonego $\sigma>0$. Ustalamy hipotezy
+        ustalonego $\sigma>0$. Ustalamy hipotezy obustronne
         \[
             H_0:\mu=\mu_0
         \]
@@ -1433,7 +1433,21 @@
         \[
             p(z)=2(1-\Phi(|z|))
         \]
-        gdzie $\Phi$ jest dystrybuantą rozkładu normalnego.
+        gdzie $\Phi$ jest dystrybuantą rozkładu normalnego. Dla
+        jednostronnej $H_1$ lewostronnej mamy
+        \[
+            C=\left(-\infty,-z_{1-\alpha}\right]
+        \]
+        \[
+            p(z)=\Phi(z)
+        \]
+        a dla prawostronnej
+        \[
+            C=\left[z_{1-\alpha},\infty\right)
+        \]
+        \[
+            p(z)=1-\Phi(z)
+        \]
     \end{theorem}
     \begin{theorem}[Test dla wartości oczekiwanej przy nieznanej wariancji]
         Jako statystykę testową bierzemy
@@ -1450,7 +1464,21 @@
         \[
             p(t)=2(1-F_{n-1}(|t|))
         \]
-        gdzie $F_{n-1}$ jest dystrybuantą rozkładu $t_{n-1}$.
+        gdzie $F_{n-1}$ jest dystrybuantą rozkładu $t_{n-1}$. Dla
+        jednostronnej $H_1$ lewostronnej mamy
+        \[
+            C=\left(-\infty,-t_{1-\alpha,n-1}\right]
+        \]
+        \[
+            p(t)=F_{n-1}(t)
+        \]
+        a dla prawostronnej
+        \[
+            C=\left[t_{1-\alpha,n-1},\infty\right)
+        \]
+        \[
+            p(t)=1-F_{n-1}(t)
+        \]
     \end{theorem}
     \begin{theorem}[Test dla wartości oczekiwanej z dwóch prób]
         Dla nieznanych, ale równych wariancji używamy statystyki
@@ -1458,18 +1486,65 @@
             T=\frac{(\bar{X}-\bar{Y})-(\mu_1-\mu_2)}
                 {S_p\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}
         \]
-        jeżeli wariancje są znane to
+        oraz przyjmujemy zbiór krytyczny na poziomie istotności $\alpha$
+        dla dwustronnej hipotezy alternatywnej
         \[
-            T=\frac{(\bar{X}-\bar{Y})-(\mu_1-\mu_2)}
-                {\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_1^2}{n_2}}}
+            C=\left(-\infty,-t_{1-\frac{\alpha}{2},n_1+n_2-2}\right] \cup
+            \left[t_{1-\frac{\alpha}{2},n_1+n_2-2},\infty\right)
         \]
-        Dla dwustronnej hipotezy alternatywnej
+        p-wartość wynosi
         \[
-            \mu_1\neq\mu_2
+            p(t)=2(1-F_{n_1+n_2-2}(|t|))
         \]
     \end{theorem}
+    \begin{theorem}[Test dla dwóch sparowanych prób]
+        Zakładamy równe liczności $X_i$ i $Y_i$ oraz wspólny rozkład
+        normalny różnic $D_i=X_i-Y_i$. Wtedy statystyką testową jest
+        \[
+            T=\frac{X_i-Y_i-(\mu_1-\mu_2)}{\frac{S_D}{\sqrt{n}}}
+        \]
+        dalej jak dla pojedynczej próby.
+    \end{theorem}
     \begin{theorem}[Test równości wariancji]
-        
+        Tutaj $X_1,X_2,\ldots,X_{n_1} \sim \mathcal{N}(m_1,\sigma_1)$
+        i $Y_1,Y_2,\ldots,Y_{n_2} \sim \mathcal{N}(m_2,\sigma_2)$.
+        Przyjmujemy
+        \[
+            H_0:\sigma_1^2=\sigma_2^2
+        \]
+        wtedy mamy statystykę testową
+        \[
+            F=\frac{\frac{S_1^2}{\sigma_1^2}}{\frac{S_2^2}{\sigma_2^2}}=
+            \frac{S_1^2}{S_2^2}
+        \]
+        i dla dwustronnej hipotezy alternatywnej otrzymujemy na poziomie
+        istotności $\alpha$ zbiór krytyczny
+        \[
+            C=\left(0,f_{\frac{\alpha}{2},n_1-1,n_2-1}\right] \cup
+            \left[f_{1-\frac{\alpha}{2},n_1-1,n_2-1},\infty\right)
+        \]
+        p-wartość wynosi
+        \[
+            p(f)=
+            \begin{cases}
+                2F_{n_1-1,n_2-1}(f) & ,f<f_{\frac{1}{2},n_1-1,n_2-1} \\
+                2(1-F_{n_1-1,n_2-1}(f)) & ,f \geq
+                f_{\frac{1}{2},n_1-1,n_2-1}
+            \end{cases}
+        \]
+        gdzie $F_{n_1-1,n_2-1}$ jest dystrybuantą rozkładu
+        $F(n_1-1,n_2-1)$. Podobnie dla jednostronnej hipotezy alternatywnej
+        \[
+            H_1:\sigma_1^2>\sigma_2^2
+        \]
+        zbiór krytyczny ma postać
+        \[
+            C=\left[f_{1-\alpha,n_1-1,n_2-1},\infty\right)
+        \]
+        a p-wartość wynosi
+        \[
+            p(f)=1-F_{n_1-1,n_2-1}(f)
+        \]
     \end{theorem}
 
     \section{Literatura}
