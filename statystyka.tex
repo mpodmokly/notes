@@ -93,7 +93,7 @@
         \item[$A \cap B= \emptyset$] -- zdarznia wzajemnie się
             wykluczają.
     \end{description}
-    \begin{definition}[Miara probabilistyczna (rozkładbprawdopodobieństwa)]
+    \begin{definition}[Miara probabilistyczna (rozkład prawdopodobieństwa)]
         W przestrzeni $\Omega$ z $\sigma$-algebrą zdarzeń $\Sigma$
         dowolne odwzorowanie
         \[
@@ -364,10 +364,10 @@
     \noindent
     Dla rozkładów dyskretnych
     \[
-        \mu'_k=\sum_{i:x_i\in \mathcal{S}}x_i^k \cdot p(x_i)
+        \mu'_k=\sum_{x_i\in \mathcal{S}}x_i^k \cdot p(x_i)
     \]
     \[
-        \mu_k=\sum_{i:x_i\in \mathcal{S}}(x_i-\mu)^k \cdot p(x_i)
+        \mu_k=\sum_{x_i\in \mathcal{S}}(x_i-\mu)^k \cdot p(x_i)
     \]
     Dla rozkładów ciągłych
     \[
@@ -1006,6 +1006,10 @@
     \[
         f_Y(y)=\int_{-\infty}^{\infty}f_{X,Y}(x,y)dx
     \]
+    zmienne losowe $X$ i $Y$ są niezależne jeśli
+    \[
+        f_{X,Y}(x,y)=f_X(x)f_Y(y)
+    \]
     rozkłady warunkowe
     \[
         f_{X|Y}(x|y)=\frac{f_{X,Y}(x,y)}{f_Y(y)}
@@ -1041,7 +1045,10 @@
     \]
     warunkowa wartość oczekiwana
     \[
-        \mathbb{E}[X|Y]=
+        \mathbb{E}[X|Y]=\int_{-\infty}^{\infty}xf_{X|Y}(x|y)dx
+    \]
+    \[
+        \mathbb{E}[Y|X]=\int_{-\infty}^{\infty}yf_{Y|X}(y|x)dx
     \]
     kowariancja
     \[
@@ -1140,11 +1147,13 @@
         wariancją $\sigma^2$. Wtedy dla dużych $n$ rozkład $\bar{X}$ jest
         w przybliżeniu równy rozkładowi normalnemu
         \[
-            \bar{X} \approx \mathcal{N}(\mu,\frac{\sigma}{\sqrt{n}})
+            \bar{X} \approx \mathcal{N}\left(\mu,\frac{\sigma}{\sqrt{n}}
+            \right)
         \]
         Natomiast dla sumy takich zmiennych losowych mamy
         \[
-            \sum_{i=1}^{n} X_i \approx \mathcal{N}(n\mu,\sigma\sqrt{n})
+            \sum_{i=1}^{n} X_i \approx \mathcal{N}\left(n\mu,\sigma\sqrt{n}
+            \right)
         \]
     \end{theorem}
 
@@ -1546,6 +1555,20 @@
             p(f)=1-F_{n_1-1,n_2-1}(f)
         \]
     \end{theorem}
+
+    \section{Regresja liniowa}
+    Model prostej regresji liniowej
+    \[
+        Y=\beta_0+\beta_1X+\epsilon
+    \]
+    gdzie \textbf{błąd losowy} $\epsilon$ ma rozkład normalny
+    \[
+        \epsilon \sim \mathcal{N}(0,\sigma)
+    \]
+    Ważnym przypadkiem funkcji straty jest błąd kwadratowy
+    \[
+        L(y,y')=(y-y')^2
+    \]
 
     \section{Literatura}
     \begin{thebibliography}{9}
