@@ -40,11 +40,11 @@
     \section{Spanning Tree Protocol (STP)}
     \subsection{Wybór Root Bridge}
     \begin{center}
-        Bridge ID (BID) = priorytet + MAC
+        Bridge ID (BID) = priorytet + VLAN ID (2B) + MAC (6B)
     \end{center}
-    Najpierw używany jest priorytet switcha, ewentualnie, jak remis,
-    to MAC. Root Bridge zostaje urządzenie o najmniejszej wartości
-    BID + MAC, czyli najwyższy priorytet.
+    Najpierw używany jest priorytet switcha, ewentualnie, jak remis, to
+    MAC. Root Bridge zostaje urządzenie o najmniejszej wartości BID,
+    czyli najwyższy priorytet.
     
     \subsection{Wybór Root Port}
     Dla każdego switcha wybierany jest jeden Root Port, który prowadzi
@@ -118,6 +118,13 @@
     \[
         M=256 \cdot (K_1B+K_3D)
     \]
+    domyślnie
+    \[
+        K_1=1
+    \]
+    \[
+        K_3=1
+    \]
     gdzie
     \[
         B=\frac{10^7}{min(\text{bandwith na ścieżce})(\text{kbps})}
@@ -131,7 +138,7 @@
     \subsection{OSPF}
     Wykorzystuje prostszą metrykę do wyznaczania najlepszej trasy, wg wzoru
     \[
-        M=\sum\frac{10^8}{B}
+        M=\sum\frac{10^5}{B(kbps)}
     \]
     gdzie $B$ to przepustowość łącza. Sumujemy po wszystkich łączach na trasie do
     sieci docelowej włącznie. Wybiera trasę z najniższą wartością metryki.
